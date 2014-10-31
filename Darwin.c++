@@ -18,6 +18,11 @@ const int IF_RANDOM = 7;
 const int IF_ENEMY = 8;
 const int GO = 9;
 
+const int NORTH = 0;
+const int EAST = 1;
+const int SOUTH = 2;
+const int WEST = 3;
+
 /*
 class Instruction {
 	public:
@@ -50,13 +55,15 @@ class Creature {
 	public:
 		Species species;
 		int direction;
-		int turn;
+		bool turnFlag;
 		bool isCreature;
 		int PC;
 
 		Creature () {}
 
-		// Creature(const Species&)
+		Creature(const Species& s) :
+		species(s), turnFlag(true), isCreature(true), PC(0)
+		{}
 
 };
 
@@ -65,12 +72,13 @@ class Darwin {
 		int turn;
 		int height;
 		int width;
+		bool turnFlag;
 
 		std::vector<std::vector<Creature> > board;
 
 
 		Darwin (int height = 8, int width = 8) :
-		turn(0), height(height), width(width), board(height, std::vector<Creature>(width)) {}
+		turn(0), height(height), width(width), turnFlag(true), board(height, std::vector<Creature>(width)) {}
 
 		void darwin_print (ostream& w) {
 			w << "Turn = " << turn << "." << endl;
@@ -91,11 +99,20 @@ class Darwin {
 			}
 			w << endl;
 		}
+		void addCreature(const Creature& c, int direction, int row, int column) {
+			board[row][column] = c;
+			board[row][column].direction = direction;
+		}
 };
 
 int main() {
-	Darwin w(12, 12);
-	w.darwin_print(cout);
+	Darwin d(12, 12);
+	Species s('a');
+	Creature c(s);
+	cout<< c.isCreature << endl;
+	d.addCreature(c, 0, 0, 0);
+	d.addCreature(c, 3, 7, 7);
+	d.darwin_print(cout);
 }
 
 
