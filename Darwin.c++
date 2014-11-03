@@ -18,10 +18,7 @@ const int IF_RANDOM = 7;
 const int IF_ENEMY = 8;
 const int GO = 9;
 
-const int NORTH = 0;
-const int EAST = 1;
-const int SOUTH = 2;
-const int WEST = 3;
+enum Direction {EAST = 0, NORTH = 1, WEST = 2, SOUTH = 3};
 
 /*
 class Instruction {
@@ -39,29 +36,30 @@ class Instruction {
 	};
 	
 */
+
 class Species {
 	public:
-		char letter;
+		char symbol;
 		//std::vector<Instruction> InstructionSet;
 
 		Species() {}
 
-		Species (char l) :
-		letter(l)
-		{}
+		Species (char s) : symbol(s) {}
+		
+		
 };
 
 class Creature {
 	public:
-		Species species;
-		int direction;
+		Species* species;
+		Direction direction;
 		bool turnFlag;
 		bool isCreature;
 		int PC;
 
 		Creature () {}
 
-		Creature(const Species& s) :
+		Creature(Species* s) :
 		species(s), turnFlag(true), isCreature(true), PC(0)
 		{}
 
@@ -74,11 +72,11 @@ class Darwin {
 		int width;
 		bool turnFlag;
 
-		std::vector<std::vector<Creature> > board;
+		std::vector<std::vector<Creature*> > board;
 
 
-		Darwin (int height = 8, int width = 8) :
-		turn(0), height(height), width(width), turnFlag(true), board(height, std::vector<Creature>(width)) {}
+		Darwin (int height, int width) :
+		turn(0), height(height), width(width), turnFlag(true), board(height, std::vector<Creature*>(width)) {}
 
 		void darwin_print (ostream& w) {
 			w << "Turn = " << turn << "." << endl;
@@ -90,30 +88,37 @@ class Darwin {
 			for (int i = 0; i < height; i++) {
 				w << i % 9 << " ";
 				for (int j = 0; j < width; j++) {
-					if(!board[i][j].isCreature)
+					if((board[i][j])& == 0)
 						w << '.';
-					else
-						w << board[i][j].species.letter; 
+					// else
+						// w << board[i][j].species.letter; 
 				}
 				w << endl;
 			}
 			w << endl;
 		}
-		void addCreature(const Creature& c, int direction, int row, int column) {
+		/*
+		void addCreature(const Creature& c, Direction direction, int row, int column) {
 			board[row][column] = c;
-			board[row][column].direction = direction;
+			// board[row][column] = direction;
 		}
+		*/
+		
 };
-
 int main() {
-	Darwin d(12, 12);
-	Species s('a');
+
+	/*
+	Darwin d(8, 8);
+	Species s('f');
+	Species s1('h');
 	Creature c(s);
 	cout<< c.isCreature << endl;
-	d.addCreature(c, 0, 0, 0);
-	d.addCreature(c, 3, 7, 7);
+	d.addCreature(c, EAST, 0, 0);
+	d.addCreature(c, EAST, 7, 7);
 	d.darwin_print(cout);
-}
+	*/
+	return 0;
+};
 
 
 
