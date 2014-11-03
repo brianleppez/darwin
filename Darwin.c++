@@ -90,8 +90,8 @@ class Darwin {
 				for (int j = 0; j < width; j++) {
 					if((board[i][j])& == 0)
 						w << '.';
-					// else
-						// w << board[i][j].species.letter; 
+					 else
+						w << board[i][j].species.letter; 
 				}
 				w << endl;
 			}
