@@ -72,7 +72,7 @@ class Darwin {
 		int width;
 		bool turnFlag;
 
-		std::vector<std::vector<Creature*> > board;
+		std::vector<std::vector<Creature*>> board;
 
 
 		Darwin (int height, int width) :
@@ -88,35 +88,35 @@ class Darwin {
 			for (int i = 0; i < height; i++) {
 				w << i % 9 << " ";
 				for (int j = 0; j < width; j++) {
-					if((board[i][j])& == 0)
+					if((board[i][j]) == 0)
 						w << '.';
-					 else
-						w << board[i][j].species.letter; 
+					//else
+						//w << board[i][j].species.letter; 
 				}
 				w << endl;
 			}
 			w << endl;
 		}
-		/*
+		
 		void addCreature(const Creature& c, Direction direction, int row, int column) {
 			board[row][column] = c;
-			// board[row][column] = direction;
+			board[row][column]->direction = direction;
 		}
-		*/
+		
 		
 };
 int main() {
 
-	/*
+	
 	Darwin d(8, 8);
-	Species s('f');
-	Species s1('h');
-	Creature c(s);
-	cout<< c.isCreature << endl;
-	d.addCreature(c, EAST, 0, 0);
-	d.addCreature(c, EAST, 7, 7);
+	//Species s('f');
+	//Species s1('h');
+	//Creature c(s);
+	//cout<< c.isCreature << endl;
+	//d.addCreature(c, EAST, 0, 0);
+	//d.addCreature(c, EAST, 7, 7);
 	d.darwin_print(cout);
-	*/
+	
 	return 0;
 };
 
