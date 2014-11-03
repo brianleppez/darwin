@@ -63,6 +63,7 @@ class Creature {
 		species(s), turnFlag(true), isCreature(true), PC(0)
 		{}
 
+
 };
 
 class Darwin {
@@ -90,16 +91,16 @@ class Darwin {
 				for (int j = 0; j < width; j++) {
 					if((board[i][j]) == 0)
 						w << '.';
-					//else
-						//w << board[i][j].species.letter; 
+					else
+						w << board[i][j]->species->symbol; 
 				}
 				w << endl;
 			}
 			w << endl;
 		}
 		
-		void addCreature(const Creature& c, Direction direction, int row, int column) {
-			board[row][column] = c;
+		void addCreature(Creature& c, Direction direction, int row, int column) {
+			board[row][column] = &c;
 			board[row][column]->direction = direction;
 		}
 		
@@ -109,12 +110,14 @@ int main() {
 
 	
 	Darwin d(8, 8);
-	//Species s('f');
+	Species s('f');
 	//Species s1('h');
-	//Creature c(s);
+	Creature c(&s);
+	Creature c1(&s);
 	//cout<< c.isCreature << endl;
-	//d.addCreature(c, EAST, 0, 0);
-	//d.addCreature(c, EAST, 7, 7);
+	d.addCreature(c, EAST, 0, 0);
+	d.addCreature(c, EAST, 7, 7);
+	d.addCreature(c1	, WEST, 4, 4);
 	d.darwin_print(cout);
 	
 	return 0;
