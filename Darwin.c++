@@ -75,7 +75,7 @@ class Creature {
 		}
 
 		void receiveInstruction () {
-			return species.InstructionSet.[PC];
+			return species.InstructionSet[PC];
 		}
 
 
