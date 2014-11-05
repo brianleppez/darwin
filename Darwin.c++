@@ -67,6 +67,15 @@ class Creature {
 		species(s), turnFlag(true), isCreature(true), PC(0)
 		{}
 
+		void infect(Creature& c) {
+			species = c.species;
+			PC = 0; 
+		}
+
+		void receiveInstruction () {
+			return species.InstructionSet.[PC];
+		}
+
 
 };
 
@@ -116,7 +125,10 @@ class Darwin {
 		void darwin_turn() {
 			for (int i = 0; i < height; ++i) {
 				for (int j = 0; j < width; j++) {
+					while (board[i][j].isCreature && board[i][j].turnFlag) {
+						const Instruction& instruction = board[i[j].species.InstructionSet
 
+					}
 				}
 			}
 		}
