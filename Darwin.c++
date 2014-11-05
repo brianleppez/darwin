@@ -10,7 +10,7 @@
 using namespace std;
 
 // Creature Instructions
-const static int HOP = 1;
+const int HOP = 1;
 const int LEFT = 2;
 const int RIGHT = 3;
 const int INFECT = 4;
@@ -168,10 +168,12 @@ class Darwin {
 		void darwin_run(int moves, ostream& o) {
 
 			cout << "darwin_run "<< endl;
-			for (int i = 1; i <= moves; ++i) {
+			darwin_print(o);
+			while(turn < moves) {
 				darwin_turn();
-				darwin_print(o);
 				darwinTurnFlag = !darwinTurnFlag;
+				turn++;
+				darwin_print(o);
 			}
 		}
 		void darwin_turn() 

@@ -75,14 +75,61 @@ int main () {
 
 
      {
-        Darwin d(8, 8);
-        Species food('f');
-        Species hopper('h');
 
+        Species food('f');
+        food.addInstruction(LEFT);
+        food.addInstruction(GO, 0);
+
+        Species hopper('h');
         hopper.addInstruction(HOP);
         hopper.addInstruction(GO, 0);
-        food.addInstruction(1);
 
+        Species rover('r');
+        rover.addInstruction(IF_ENEMY, 9);  //0
+        rover.addInstruction(IF_EMPTY, 7);  //1
+        rover.addInstruction(IF_RANDOM, 5); //2
+        rover.addInstruction(LEFT);         //3
+        rover.addInstruction(GO, 0);        //4
+        rover.addInstruction(RIGHT);        //5
+        rover.addInstruction(GO, 0);         //6
+        rover.addInstruction(HOP);          //7
+        rover.addInstruction(GO, 0);        //8
+        rover.addInstruction(INFECT);       //9
+        rover.addInstruction(GO, 0);        //10
+
+        Species trap('t');
+
+        trap.addInstruction(IF_ENEMY, 3);
+        trap.addInstruction(LEFT);
+        trap.addInstruction(GO, 0);
+        trap.addInstruction(INFECT);
+        trap.addInstruction(GO, 0);
+        
+        Creature c1(&food);
+        Creature c2(&hopper);
+/*
+        *** Darwin 8x8 *** START BOARD
+                Turn = 0.
+                  01234567
+                0 f.......
+                1 ........
+                2 ........
+                3 ...hh...
+                4 ...hh...
+                5 ........
+                6 ........
+                7 .......f
+*/
+
+        Darwin d(8,8);
+        d.addCreature(c1, NORTH, 0, 0);
+        d.addCreature(c1, SOUTH, 7, 7);
+        d.addCreature(c2, NORTH, 3, 3);
+        d.addCreature(c2, EAST, 3, 4);        
+        d.addCreature(c2, WEST, 4, 3);
+        d.addCreature(c2, SOUTH, 4, 4);
+
+        d.darwin_run(5, std::cout);
      }
      
     // Creature c1(&s1);
@@ -106,43 +153,43 @@ int main () {
     // d.darwin_print(cout);
 
      {
-    Darwin d(10, 10);
-    Species hopper('h');
-    Species food('f');
+        Darwin d(10, 10);
+        Species hopper('h');
+        Species food('f');
 
-    //cout << "hopper:  " << hopper.symbol << endl;
-
-
-    hopper.addInstruction(1);
-    food.addInstruction(1);
-
-    //cout << "hopper2:  " << hopper.symbol << endl;
-    Creature h1(&hopper);
-    //cout << "Direction at addCreature0:" << h1.direction << endl;
-    Creature h2(&food);
-    //cout << "Direction at addCreature0.1:" << h1.direction << endl;
-
-    //cout << "hopper3:  " << hopper.symbol << endl;
+        //cout << "hopper:  " << hopper.symbol << endl;
 
 
-    d.addCreature(h1, SOUTH, 1, 2);
-    //cout << "Direction at addCreature:" << d.board[1][1]->direction << endl;
-    //cout << "hopper4:  " << hopper.symbol << endl;
-    d.addCreature(h2, NORTH, 9, 2);
-    cout << "Direction of Creature1: " << d.board[1][2]->direction << endl;
-    cout << "Direction of Creature2: " << d.board[9][2]->direction << endl;
-    d.darwin_print(cout);
+        hopper.addInstruction(1);
+        food.addInstruction(1);
+
+        //cout << "hopper2:  " << hopper.symbol << endl;
+        Creature h1(&hopper);
+        //cout << "Direction at addCreature0:" << h1.direction << endl;
+        Creature h2(&food);
+        //cout << "Direction at addCreature0.1:" << h1.direction << endl;
+
+        //cout << "hopper3:  " << hopper.symbol << endl;
 
 
-    
-    
-    // d.addCreature(monster, NORTH, 0, 0);
-    // d.addCreature(monster, SOUTH, 9, 8);
-    // d.addCreature(monster, EAST, 9, 9);
+        d.addCreature(h1, SOUTH, 1, 2);
+        //cout << "Direction at addCreature:" << d.board[1][1]->direction << endl;
+        //cout << "hopper4:  " << hopper.symbol << endl;
+        d.addCreature(h2, NORTH, 9, 2);
+        cout << "Direction of Creature1: " << d.board[1][2]->direction << endl;
+        cout << "Direction of Creature2: " << d.board[9][2]->direction << endl;
+        d.darwin_print(cout);
 
-    //d.addCreature(monster, NORTH, 1, 2);
 
-    d.darwin_run(9, std::cout);
+        
+        
+        // d.addCreature(monster, NORTH, 0, 0);
+        // d.addCreature(monster, SOUTH, 9, 8);
+        // d.addCreature(monster, EAST, 9, 9);
+
+        //d.addCreature(monster, NORTH, 1, 2);
+
+        d.darwin_run(9, std::cout);
     }
 
     cout << "*** Darwin 8x8 ***" << endl;
