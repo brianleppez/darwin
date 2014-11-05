@@ -101,8 +101,8 @@ class Creature {
 		}
 
 		void infect(Creature* other) {
-			if(species->symbol == other->species->symbol) {
-				species = other->species;
+			if(species->symbol != other->species->symbol) {
+				other->species = species;
 				PC = 0; 
 			}
 
@@ -279,7 +279,7 @@ class Darwin {
 										 std::cout << "infect east" << endl;
 										if(j < width-1 && board[i][j+1] != 0)
 										{
-											board[i][j+1]->infect(board[i][j]);
+											board[i][j]->infect(board[i][j+1]);
 										}
 									break;
 									
@@ -288,7 +288,7 @@ class Darwin {
 										std::cout << "infect north >> : " << board[i-1][j] << endl;
 										if(i > 0 && board[i-1][j] != 0 && board[i-1][j])
 										{
-											board[i-1][j]->infect(board[i][j]);
+											board[i][j]->infect(board[i-1][j]);
 										}
 									break;
 
@@ -297,7 +297,7 @@ class Darwin {
 										std::cout << "infect west" << endl;
 										if(j > 0 && board[i][j-1] == 0)
 										{
-											board[i][j-1]->infect(board[i][j]);
+											board[i][j]->infect(board[i][j-1]);
 										}
 									break;
 
@@ -306,7 +306,7 @@ class Darwin {
 										std::cout << "infect south" << endl;
 										if(i < height-1 && board[i+1][j] == 0)
 										{
-											board[i+1][j]->infect(board[i][j]);
+											board[i][j]->infect(board[i+1][j]);
 										}
 									break;
 								}
