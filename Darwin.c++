@@ -315,9 +315,16 @@ class Darwin {
 								if ((board[i][j]->direction == EAST && j < width -1 && board[i][j+1] == 0) ||
 									(board[i][j]->direction == NORTH && i > 0 && board[i-1][j] == 0) ||
 									(board[i][j]->direction == WEST && j > 0 && board[i][j-1] == 0) ||
-									(board[i][j]->direction == SOUTH && i < height -1 && board[i+1][j] == 0)) {
-									// do stuff
+									(board[i][j]->direction == SOUTH && i < height -1 && board[i+1][j] == 0)) 
+								{
+									// go to line N
+									board[i][j]->PC = board[i][j]->species->InstructionSet[board[i][j]->PC].second;
 								}
+								else
+								{
+									board[i][j]->PC++;
+								}
+
 							break;
 
 							case 6: // if_wall

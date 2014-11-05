@@ -80,7 +80,7 @@ int main () {
         Species hopper('h');
 
         hopper.addInstruction(HOP);
-        hopper.addInstruction(GO_TO, 0);
+        hopper.addInstruction(GO, 0);
         food.addInstruction(1);
 
      }
