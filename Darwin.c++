@@ -35,9 +35,10 @@ const int SOUTH = 3; // DOWN
 class Instruction {
 	public:
 		int command;
+		int target;
 
-		Instruction(int c) :
-		command(c)
+		Instruction(int c, int t = 0) :
+		command(c), target(t)
 		{}
 
 		bool isInstructionControl() {
@@ -94,7 +95,7 @@ class Creature {
 		Creature(Species* s) :
 		species(s), direction(0), turnFlag(false), PC(0)
 		{
-			this->direction = direction;
+			// this->direction = direction;
 			//cout << "copy constructor<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
 		}
 
@@ -256,7 +257,7 @@ class Darwin {
 							break;
 							case 3: // right
 								if (board[i][j]->direction == EAST)
-									board[i][j]->direction == SOUTH;
+									board[i][j]->direction = SOUTH;
 								else {
 									board[i][j]->direction--;
 								}
@@ -275,7 +276,7 @@ class Darwin {
 									case NORTH:
 										
 										std::cout << "infect north >> : " << board[i-1][j] << endl;
-										if(i > 0 && board[i-1][j] != 0 && board[i-1][j])_
+										if(i > 0 && board[i-1][j] != 0 && board[i-1][j])
 										{
 											board[i-1][j]->infect(board[i][j]);
 										}
@@ -305,8 +306,36 @@ class Darwin {
 									(board[i][j]->direction == NORTH && i > 0 && board[i-1][j] == 0) ||
 									(board[i][j]->direction == WEST && j > 0 && board[i][j-1] == 0) ||
 									(board[i][j]->direction == SOUTH && i < height -1 && board[i+1][j] == 0)) {
-									
+									// do stuff
 								}
+							break;
+							case 6: // if_wall
+								if ((board[i][j]->direction == EAST && j == width -1) ||
+									(board[i][j]->direction == NORTH && i == 0) ||
+									(board[i][j]->direction == WEST && j == 0) ||
+									(board[i][j]->direction == SOUTH && i == height -1)) {
+										// do stuff
+								}
+							break;
+							case 7: // if_random
+								if (rand() % 2 == 1) {
+									// go to line n
+								}
+								else {
+									// continue
+								}
+							break;
+							case 8: // if_enemy
+								if ((board[i][j]->direction == WEST && j > 0 && board[i][j-1] != 0 && board[i][j-1]->species != board[i][j]->species) || \
+                        			(board[i][j]->direction == NORTH && i > 0 && board[i-1][j] != 0 && board[i-1][j]->species != board[i][j]->species) || \
+                        			(board[i][j]->direction == EAST && j < width - 1 && board[i][j+1] != 0 && board[i][j+1]->species != board[i][j]->species)  || \
+                        			(board[i][j]->direction == SOUTH && i < height - 1 && board[i+1][j] != 0 && board[i+1][j]->species != board[i][j]->species)) {
+										// do something
+								}
+								else {
+									// do something else
+								}
+
 						break;
 
 
