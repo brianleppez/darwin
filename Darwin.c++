@@ -10,7 +10,7 @@
 using namespace std;
 
 // Creature Instructions
-const int HOP = 1;
+const static int HOP = 1;
 const int LEFT = 2;
 const int RIGHT = 3;
 const int INFECT = 4;
@@ -53,15 +53,16 @@ class Instruction {
 class Species {
 	public:
 		char symbol;
-		std::vector<int> InstructionSet;
+		std::vector<std::pair<int, int>> InstructionSet;
 
 		Species() {}
 
 		Species (char s) : symbol(s) {}
 
-		void addInstruction (const int i)
+		void addInstruction (const int i, int n = -1)
 		{
-			InstructionSet.push_back(i);
+			std::pair<int, int> instruction(i, n);
+			InstructionSet.push_back(instruction);
 		}
 
 		bool operator != (const Species& other) const {
@@ -120,7 +121,7 @@ class Darwin {
 		int height;
 		int width;
 		bool darwinTurnFlag;
-		std::vector<Creature> creatures;
+		//std::vector<Creature> creatures;
 
 		std::vector<std::vector<Creature*>> board;
 
@@ -191,7 +192,7 @@ class Darwin {
 
 					if (board[i][j] != 0 && board[i][j]->turnFlag == darwinTurnFlag) {
 						
-						int instruction = board[i][j]->species->InstructionSet[board[i][j]->PC];
+						int instruction = board[i][j]->species->InstructionSet[board[i][j]->PC].first;
 						
 
 						switch(instruction)

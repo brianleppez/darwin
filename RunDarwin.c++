@@ -74,10 +74,17 @@ int main () {
     // ----------
 
 
+     {
+        Darwin d(8, 8);
+        Species food('f');
+        Species hopper('h');
 
-    // Darwin d(8, 8);
-    // Species s1('f');
-    // Species s2('h');
+        hopper.addInstruction(HOP);
+        hopper.addInstruction(GO_TO, 0);
+        food.addInstruction(1);
+
+     }
+     
     // Creature c1(&s1);
     // Creature c2(&s2);
     // vector<Creature> cr;
@@ -98,10 +105,10 @@ int main () {
 
     // d.darwin_print(cout);
 
-
+     {
     Darwin d(10, 10);
-    Species hopper('x');
-    Species food('y');
+    Species hopper('h');
+    Species food('f');
 
     //cout << "hopper:  " << hopper.symbol << endl;
 
@@ -136,7 +143,7 @@ int main () {
     //d.addCreature(monster, NORTH, 1, 2);
 
     d.darwin_run(9, std::cout);
-
+    }
 
     cout << "*** Darwin 8x8 ***" << endl;
     /*
