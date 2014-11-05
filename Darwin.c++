@@ -352,7 +352,7 @@ class Darwin {
 									board[i][j]->PC = board[i][j]->species->InstructionSet[board[i][j]->PC].second;
 								}
 								else {
-									// continue
+									// go to next line
 									board[i][j]->PC++;
 								}
 							break;
@@ -362,16 +362,19 @@ class Darwin {
 								if ((board[i][j]->direction == WEST && j > 0 && board[i][j-1] != 0 && board[i][j-1]->species != board[i][j]->species) || \
                         			(board[i][j]->direction == NORTH && i > 0 && board[i-1][j] != 0 && board[i-1][j]->species != board[i][j]->species) || \
                         			(board[i][j]->direction == EAST && j < width - 1 && board[i][j+1] != 0 && board[i][j+1]->species != board[i][j]->species)  || \
-                        			(board[i][j]->direction == SOUTH && i < height - 1 && board[i+1][j] != 0 && board[i+1][j]->species != board[i][j]->species)) {
-										// do something
+                        			(board[i][j]->direction == SOUTH && i < height - 1 && board[i+1][j] != 0 && board[i+1][j]->species != board[i][j]->species)) 
+								{
+									// go to line N
+									board[i][j]->PC = board[i][j]->species->InstructionSet[board[i][j]->PC].second;
 								}
 								else {
-									// do something else
+									// go to next line
+									board[i][j]->PC++;
 								}
 							break;
 
 							case 9:
-
+								// GO to line N
 								board[i][j]->PC = board[i][j]->species->InstructionSet[board[i][j]->PC].second;
 
 						break;
