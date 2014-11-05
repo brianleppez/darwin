@@ -5,6 +5,8 @@
 #include <cstdlib>
 #include <cassert>
 
+#include "gtest/gtest.h"
+
 using namespace std;
 
 // Creature Instructions
@@ -77,6 +79,8 @@ class Creature {
 		}
 
 
+
+
 };
 
 class Darwin {
@@ -138,16 +142,27 @@ class Darwin {
 
 int main() {
 
-	
 	Darwin d(8, 8);
-	Species s('f');
-	//Species s1('h');
-	Creature c(&s);
-	Creature c1(&s);
-	//cout<< c.isCreature << endl;
-	d.addCreature(c, EAST, 0, 0);
-	d.addCreature(c, EAST, 7, 7);
-	d.addCreature(c1	, WEST, 4, 4);
+	Species s1('f');
+	Species s2('h');
+	Creature c1(&s1);
+	Creature c2(&s2);
+	vector<Creature> cr;
+	for (int i = 0; i < 4; ++i) {
+		cr.push_back(c1);
+	}
+	cr.push_back(c2);
+	cr.push_back(c2);
+	for (int i = 0; i < cr.size(); ++i) {
+		cout << "Size: " << cr.size() << endl;
+		d.addCreature(cr[i], NORTH, 3, 3);
+		d.addCreature(cr[i], EAST, 3, 4);
+		d.addCreature(cr[i], SOUTH, 4, 4);
+		d.addCreature(cr[i], WEST, 4, 3);
+		d.addCreature(cr[i], EAST, 0, 0);
+		d.addCreature(cr[i], NORTH, 7, 7);
+	}
+
 	d.darwin_print(cout);
 	
 	return 0;
