@@ -105,8 +105,12 @@ int main () {
         trap.addInstruction(INFECT);
         trap.addInstruction(GO, 0);
         
-        Creature c1(&food);
+        Creature f1(&food);
+        Creature f2(&food);
+        Creature c1(&hopper);
         Creature c2(&hopper);
+        Creature c3(&hopper);
+        Creature c4(&hopper);
 /*
         *** Darwin 8x8 *** START BOARD
                 Turn = 0.
@@ -122,12 +126,14 @@ int main () {
 */
 
         Darwin d(8,8);
-        d.addCreature(c1, NORTH, 0, 0);
-        d.addCreature(c1, SOUTH, 7, 7);
-        d.addCreature(c2, NORTH, 3, 3);
+        d.addCreature(f1, NORTH, 0, 0);
+        d.addCreature(f2, SOUTH, 7, 7);
+        d.addCreature(c1, NORTH, 3, 3);
         d.addCreature(c2, EAST, 3, 4);        
-        d.addCreature(c2, WEST, 4, 3);
-        d.addCreature(c2, SOUTH, 4, 4);
+        d.addCreature(c3, WEST, 4, 3);
+        d.addCreature(c4, SOUTH, 4, 4);
+
+        cout << "darwin 8x8 debugging: " << d.board[3][3]->direction << endl;
 
         d.darwin_run(5, std::cout);
      }
