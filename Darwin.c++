@@ -349,9 +349,11 @@ class Darwin {
 								
 								if (rand() % 2 == 1) {
 									// go to line n
+									board[i][j]->PC = board[i][j]->species->InstructionSet[board[i][j]->PC].second;
 								}
 								else {
 									// continue
+									board[i][j]->PC++;
 								}
 							break;
 
