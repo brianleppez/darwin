@@ -193,6 +193,7 @@ class Darwin {
 					if (board[i][j] != 0 && board[i][j]->turnFlag == darwinTurnFlag) {
 						
 						int instruction = board[i][j]->species->InstructionSet[board[i][j]->PC].first;
+
 						
 
 						switch(instruction)
@@ -252,18 +253,24 @@ class Darwin {
 
 										
 								}	
-								break;
+							break;
+							
 							case 2: // left
+							
 								board[i][j]->direction = ((board[i][j]->direction) +1) % 4;
 							break;
+							
 							case 3: // right
+								
 								if (board[i][j]->direction == EAST)
 									board[i][j]->direction = SOUTH;
 								else {
 									board[i][j]->direction--;
 								}
 							break;
+							
 							case 4: // infect
+								
 								switch(board[i][j]->direction)
 								{
 									case EAST:
@@ -302,7 +309,9 @@ class Darwin {
 									break;
 								}
 							break;
+
 							case 5: // if_empty
+								
 								if ((board[i][j]->direction == EAST && j < width -1 && board[i][j+1] == 0) ||
 									(board[i][j]->direction == NORTH && i > 0 && board[i-1][j] == 0) ||
 									(board[i][j]->direction == WEST && j > 0 && board[i][j-1] == 0) ||
@@ -310,7 +319,9 @@ class Darwin {
 									// do stuff
 								}
 							break;
+
 							case 6: // if_wall
+								
 								if ((board[i][j]->direction == EAST && j == width -1) ||
 									(board[i][j]->direction == NORTH && i == 0) ||
 									(board[i][j]->direction == WEST && j == 0) ||
@@ -318,7 +329,9 @@ class Darwin {
 										// do stuff
 								}
 							break;
+
 							case 7: // if_random
+								
 								if (rand() % 2 == 1) {
 									// go to line n
 								}
@@ -326,7 +339,9 @@ class Darwin {
 									// continue
 								}
 							break;
+
 							case 8: // if_enemy
+								
 								if ((board[i][j]->direction == WEST && j > 0 && board[i][j-1] != 0 && board[i][j-1]->species != board[i][j]->species) || \
                         			(board[i][j]->direction == NORTH && i > 0 && board[i-1][j] != 0 && board[i-1][j]->species != board[i][j]->species) || \
                         			(board[i][j]->direction == EAST && j < width - 1 && board[i][j+1] != 0 && board[i][j+1]->species != board[i][j]->species)  || \
@@ -336,6 +351,11 @@ class Darwin {
 								else {
 									// do something else
 								}
+							break;
+
+							case 9:
+
+								board[i][j]->PC = board[i][j]->species->InstructionSet[board[i][j]->PC].second;
 
 						break;
 
