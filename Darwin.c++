@@ -7,11 +7,14 @@
 
 using namespace std;
 
+// Creature Instructions
 const int HOP = 1;
 const int LEFT = 2;
 const int RIGHT = 3;
 const int INFECT = 4;
 
+
+// Control flow Instructions
 const int IF_EMPTY = 5;
 const int IF_WALL = 6;
 const int IF_RANDOM = 7;
@@ -20,7 +23,7 @@ const int GO = 9;
 
 enum Direction {EAST = 0, NORTH = 1, WEST = 2, SOUTH = 3};
 
-/*
+
 class Instruction {
 	public:
 		int command;
@@ -33,14 +36,15 @@ class Instruction {
 		if (command == HOP || command == LEFT || command == RIGHT || command == INFECT) 
 			return false;
 		return true;
-	};
+	}
+};
+
 	
-*/
 
 class Species {
 	public:
 		char symbol;
-		//std::vector<Instruction> InstructionSet;
+		std::vector<Instruction> InstructionSet;
 
 		Species() {}
 
@@ -103,9 +107,23 @@ class Darwin {
 			board[row][column] = &c;
 			board[row][column]->direction = direction;
 		}
+
+		void darwin_run(int moves, ostream& o) {
+			for (int i = 1; i <= moves; ++i) {
+				darwin_turn();
+			}
+		}
+		void darwin_turn() {
+			for (int i = 0; i < height; ++i) {
+				for (int j = 0; j < width; j++) {
+
+				}
+			}
+		}
 		
 		
 };
+
 int main() {
 
 	
