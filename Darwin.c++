@@ -23,10 +23,10 @@ const int IF_RANDOM = 7;
 const int IF_ENEMY = 8;
 const int GO = 9;
 
-const int EAST = 0;
-const int NORTH = 1;
-const int WEST = 2;
-const int SOUTH = 3;
+const int EAST = 0; // RIGHT
+const int NORTH = 1; // UP
+const int WEST = 2; // LEFT
+const int SOUTH = 3; // DOWN
 
 // enum Direction {EAST = 0, NORTH = 1, WEST = 2, SOUTH = 3};
 
@@ -62,6 +62,8 @@ class Species {
 		{
 			InstructionSet.push_back(i);
 		}
+
+
 		
 		
 };
@@ -90,8 +92,11 @@ class Creature {
 		}
 
 		void infect(Creature& c) {
-			species = c.species;
-			PC = 0; 
+			if(species->symbol == c->species->symbol) {
+				species = c.species;
+				PC = 0; 
+			}
+
 		}
 
 		// int receiveInstruction () {
@@ -177,7 +182,7 @@ class Darwin {
 
 						switch(instruction)
 						{
-							case 1:
+							case 1: // HOP
 								switch(board[i][j]->direction)
 								{
 									case EAST:
@@ -232,7 +237,72 @@ class Darwin {
 
 										
 								}	
-								break;	
+								break;
+							case 2: // left
+								board[i][j]->direction = (board[i[j]->direction+1) % 4;
+							break;
+							case 3: // right
+								if (board[i][j]->direction == EAST)
+									board[i][j]->direction == SOUTH;
+								else {
+									board[i][j]->direction--;
+								}
+							break;
+							case 4: // infect
+								switch(board[i][j]->direction)
+								{
+									case EAST:
+										std::cout << "east" << endl;
+										if(j < width-1 && board[i][j+1] != 0)
+										{
+											std::cout << "east1" << endl;
+											board[i][j+1] = board[i][j];
+											board[i][j] = 0;
+
+											board[i][j+1]->turnFlag = !board[i][j+1]->turnFlag;
+										}
+									break;
+									
+									case NORTH:
+										
+										std::cout << "north >> : " << board[i-1][j] << endl;
+										if(i > 0 && board[i-1][j] == 0)
+										{
+											std::cout << "north1" << endl;
+											board[i-1][j] = board[i][j];
+											board[i][j] = 0;
+											cout << "north turnFlag: " << board[i-1][j]->turnFlag << endl;
+											board[i-1][j]->turnFlag = !board[i-1][j]->turnFlag;
+											cout << "north turnFlag2: " << board[i-1][j]->turnFlag << endl;
+										}
+									break;
+
+									case WEST:
+										
+										std::cout << "west" << endl;
+										if(j > 0 && board[i][j-1] == 0)
+										{
+											std::cout << "west1" << endl;
+											board[i][j-1] = board[i][j];
+											board[i][j] = 0;
+											board[i][j-1]->turnFlag = !board[i][j-1]->turnFlag;
+										}
+									break;
+
+									case SOUTH:
+										
+										std::cout << "south" << endl;
+										if(i < height-1 && board[i+1][j] == 0)
+										{
+											std::cout << "south1" << endl;
+											board[i+1][j] = board[i][j];
+											board[i][j] = 0;
+											board[i+1][j]->turnFlag = !board[i+1][j]->turnFlag;
+										}
+									break;
+
+
+
 
 
 
