@@ -63,6 +63,10 @@ class Species {
 			InstructionSet.push_back(i);
 		}
 
+		bool operator != (const Species& other) const {
+			return (this->symbol != other.symbol);
+		}
+
 
 		
 		
@@ -262,7 +266,7 @@ class Darwin {
 								{
 									case EAST:
 										std::cout << "east" << endl;
-										if(j < width-1 && board[i][j+1] != 0)
+										if(j < width-1 && board[i][j+1] != 0 && board[i][j+1]->species != board[i][j]->species)
 										{
 											std::cout << "east1" << endl;
 											board[i][j+1] = board[i][j];
