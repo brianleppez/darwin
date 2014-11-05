@@ -75,7 +75,9 @@ class Creature {
 		int PC;
 
 
-		Creature () {}
+		Creature () {
+			cout << "default constructor<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
+		}
 
 		// Creature (const Creature& other) :
 		// species(other.species), direction(other.direction), turnFlag(other.turnFlag), PC(other.PC)
@@ -87,6 +89,7 @@ class Creature {
 		species(s), direction(0), turnFlag(false), PC(0)
 		{
 			this->direction = direction;
+			cout << "copy constructor<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
 		}
 
 		void infect(Creature& c) {
@@ -107,6 +110,7 @@ class Darwin {
 		int height;
 		int width;
 		bool darwinTurnFlag;
+		std::vector<Creature> creatures;
 
 		std::vector<std::vector<Creature*>> board;
 
@@ -127,7 +131,11 @@ class Darwin {
 					if((board[i][j]) == 0)
 						w << '.';
 					else
-						w << board[i][j]->species->symbol; 
+					{
+						if(board[i][j]->species != 0)
+							w << board[i][j]->species->symbol; 
+					}
+						
 				}
 				w << endl;
 			}
@@ -138,8 +146,8 @@ class Darwin {
 			//cout << "AddCreature: direction: " << direction << endl;
 			//cout << "addCreature1: " << c.direction << endl;
 			darwin_print(std::cout);
-
-			board[row][column] = &c;
+			creatures.push_back(c);
+			board[row][column] = &creatures.back();
 			cout << "addCreature3: " << board[row][column]->direction << endl;
 			cout << "addCreature4.1: " << board[1][1]->direction << endl;
 			board[row][column]->direction = direction;
@@ -279,18 +287,28 @@ int main() {
 	Species hopper('h');
 	Species food('f');
 
+	cout << "hopper:  " << hopper.symbol << endl;
+
 
 	hopper.addInstruction(1);
+
+	cout << "hopper2:  " << hopper.symbol << endl;
 	Creature h1(&hopper, SOUTH);
 	cout << "Direction at addCreature0:" << h1.direction << endl;
 	Creature h2(&food, NORTH);
 	cout << "Direction at addCreature0.1:" << h1.direction << endl;
 
+	cout << "hopper3:  " << hopper.symbol << endl;
+
 
 	d.addCreature(h1, SOUTH, 1, 1);
 	cout << "Direction at addCreature:" << d.board[1][1]->direction << endl;
+	cout << "hopper4:  " << hopper.symbol << endl;
 	d.addCreature(h2, NORTH, 9, 2);
 	cout << "Direction at addCreature2: " << d.board[1][1]->direction << endl;
+	cout << "hopper5:  " << hopper.symbol << endl;
+
+	
 	
 	// d.addCreature(monster, NORTH, 0, 0);
 	// d.addCreature(monster, SOUTH, 9, 8);
