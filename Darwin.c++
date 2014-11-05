@@ -98,9 +98,9 @@ class Creature {
 			//cout << "copy constructor<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
 		}
 
-		void infect(Creature& c) {
-			if(species->symbol == c.species->symbol) {
-				species = c.species;
+		void infect(Creature* other) {
+			if(species->symbol == other->species->symbol) {
+				species = other->species;
 				PC = 0; 
 			}
 
@@ -199,10 +199,10 @@ class Darwin {
 								switch(board[i][j]->direction)
 								{
 									case EAST:
-										std::cout << "east" << endl;
+										//std::cout << "east" << endl;
 										if(j < width-1 && board[i][j+1] == 0)
 										{
-											std::cout << "east1" << endl;
+											//std::cout << "east1" << endl;
 											board[i][j+1] = board[i][j];
 											board[i][j] = 0;
 
@@ -212,24 +212,24 @@ class Darwin {
 									
 									case NORTH:
 										
-										std::cout << "north >> : " << board[i-1][j] << endl;
+										//std::cout << "north >> : " << board[i-1][j] << endl;
 										if(i > 0 && board[i-1][j] == 0)
 										{
-											std::cout << "north1" << endl;
+											//std::cout << "north1" << endl;
 											board[i-1][j] = board[i][j];
 											board[i][j] = 0;
-											cout << "north turnFlag: " << board[i-1][j]->turnFlag << endl;
+											//cout << "north turnFlag: " << board[i-1][j]->turnFlag << endl;
 											board[i-1][j]->turnFlag = !board[i-1][j]->turnFlag;
-											cout << "north turnFlag2: " << board[i-1][j]->turnFlag << endl;
+											//cout << "north turnFlag2: " << board[i-1][j]->turnFlag << endl;
 										}
 									break;
 
 									case WEST:
 										
-										std::cout << "west" << endl;
+										//std::cout << "west" << endl;
 										if(j > 0 && board[i][j-1] == 0)
 										{
-											std::cout << "west1" << endl;
+											//std::cout << "west1" << endl;
 											board[i][j-1] = board[i][j];
 											board[i][j] = 0;
 											board[i][j-1]->turnFlag = !board[i][j-1]->turnFlag;
@@ -265,56 +265,48 @@ class Darwin {
 								switch(board[i][j]->direction)
 								{
 									case EAST:
-										std::cout << "east" << endl;
-										if(j < width-1 && board[i][j+1] != 0 && board[i][j+1]->species != board[i][j]->species)
+										 std::cout << "infect east" << endl;
+										if(j < width-1 && board[i][j+1] != 0)
 										{
-											std::cout << "east1" << endl;
-											board[i][j+1] = board[i][j];
-											board[i][j] = 0;
-
-											board[i][j+1]->turnFlag = !board[i][j+1]->turnFlag;
+											board[i][j+1]->infect(board[i][j]);
 										}
 									break;
 									
 									case NORTH:
 										
-										std::cout << "north >> : " << board[i-1][j] << endl;
-										if(i > 0 && board[i-1][j] == 0)
+										std::cout << "infect north >> : " << board[i-1][j] << endl;
+										if(i > 0 && board[i-1][j] != 0 && board[i-1][j])_
 										{
-											std::cout << "north1" << endl;
-											board[i-1][j] = board[i][j];
-											board[i][j] = 0;
-											cout << "north turnFlag: " << board[i-1][j]->turnFlag << endl;
-											board[i-1][j]->turnFlag = !board[i-1][j]->turnFlag;
-											cout << "north turnFlag2: " << board[i-1][j]->turnFlag << endl;
+											board[i-1][j]->infect(board[i][j]);
 										}
 									break;
 
 									case WEST:
 										
-										std::cout << "west" << endl;
+										std::cout << "infect west" << endl;
 										if(j > 0 && board[i][j-1] == 0)
 										{
-											std::cout << "west1" << endl;
-											board[i][j-1] = board[i][j];
-											board[i][j] = 0;
-											board[i][j-1]->turnFlag = !board[i][j-1]->turnFlag;
+											board[i][j-1]->infect(board[i][j]);
 										}
 									break;
 
 									case SOUTH:
 										
-										std::cout << "south" << endl;
+										std::cout << "infect south" << endl;
 										if(i < height-1 && board[i+1][j] == 0)
 										{
-											std::cout << "south1" << endl;
-											board[i+1][j] = board[i][j];
-											board[i][j] = 0;
-											board[i+1][j]->turnFlag = !board[i+1][j]->turnFlag;
+											board[i+1][j]->infect(board[i][j]);
 										}
 									break;
 								}
 							break;
+							case 5: // if_empty
+								if ((board[i][j]->direction == EAST && j < width -1 && board[i][j+1] == 0) ||
+									(board[i][j]->direction == NORTH && i > 0 && board[i-1][j] == 0) ||
+									(board[i][j]->direction == WEST && j > 0 && board[i][j-1] == 0) ||
+									(board[i][j]->direction == SOUTH && i < height -1 && board[i+1][j] == 0)) {
+									
+								}
 						break;
 
 
@@ -329,84 +321,4 @@ class Darwin {
 				}
 			}
 		}
-
-	
-		
-		
 };
-
-int main() {
-
-	// Darwin d(8, 8);
-	// Species s1('f');
-	// Species s2('h');
-	// Creature c1(&s1);
-	// Creature c2(&s2);
-	// vector<Creature> cr;
-	// for (int i = 0; i < 4; ++i) {
-	// 	cr.push_back(c1);
-	// }
-	// cr.push_back(c2);
-	// cr.push_back(c2);
-	// for (int i = 0; i < cr.size(); ++i) {
-	// 	cout << "Size: " << cr.size() << endl;
-	// 	d.addCreature(cr[i], NORTH, 3, 3);
-	// 	d.addCreature(cr[i], EAST, 3, 4);
-	// 	d.addCreature(cr[i], SOUTH, 4, 4);
-	// 	d.addCreature(cr[i], WEST, 4, 3);
-	// 	d.addCreature(cr[i], EAST, 0, 0);
-	// 	d.addCreature(cr[i], NORTH, 7, 7);
-	// }
-
-	// d.darwin_print(cout);
-
-
-	Darwin d(10, 10);
-	Species hopper('x');
-	Species food('y');
-
-	//cout << "hopper:  " << hopper.symbol << endl;
-
-
-	hopper.addInstruction(1);
-	food.addInstruction(1);
-
-	//cout << "hopper2:  " << hopper.symbol << endl;
-	Creature h1(&hopper);
-	//cout << "Direction at addCreature0:" << h1.direction << endl;
-	Creature h2(&food);
-	//cout << "Direction at addCreature0.1:" << h1.direction << endl;
-
-	//cout << "hopper3:  " << hopper.symbol << endl;
-
-
-	d.addCreature(h1, SOUTH, 1, 2);
-	//cout << "Direction at addCreature:" << d.board[1][1]->direction << endl;
-	//cout << "hopper4:  " << hopper.symbol << endl;
-	d.addCreature(h2, NORTH, 9, 2);
-	cout << "Direction of Creature1: " << d.board[1][2]->direction << endl;
-	cout << "Direction of Creature2: " << d.board[9][2]->direction << endl;
-	d.darwin_print(cout);
-
-
-	
-	
-	// d.addCreature(monster, NORTH, 0, 0);
-	// d.addCreature(monster, SOUTH, 9, 8);
-	// d.addCreature(monster, EAST, 9, 9);
-
-	//d.addCreature(monster, NORTH, 1, 2);
-
-	d.darwin_run(9, std::cout);
-
-
-
-
-
-
-	
-	return 0;
-}
-
-
-

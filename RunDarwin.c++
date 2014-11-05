@@ -12,6 +12,7 @@
 #include <cstdlib>   // rand, srand
 #include <iostream>  // cout, endl
 #include <stdexcept> // invalid_argument, out_of_range
+#include "Darwin.c++"
 
 // ----
 // main
@@ -71,6 +72,71 @@ int main () {
     // ----------
     // darwin 8x8
     // ----------
+
+
+
+    // Darwin d(8, 8);
+    // Species s1('f');
+    // Species s2('h');
+    // Creature c1(&s1);
+    // Creature c2(&s2);
+    // vector<Creature> cr;
+    // for (int i = 0; i < 4; ++i) {
+    //  cr.push_back(c1);
+    // }
+    // cr.push_back(c2);
+    // cr.push_back(c2);
+    // for (int i = 0; i < cr.size(); ++i) {
+    //  cout << "Size: " << cr.size() << endl;
+    //  d.addCreature(cr[i], NORTH, 3, 3);
+    //  d.addCreature(cr[i], EAST, 3, 4);
+    //  d.addCreature(cr[i], SOUTH, 4, 4);
+    //  d.addCreature(cr[i], WEST, 4, 3);
+    //  d.addCreature(cr[i], EAST, 0, 0);
+    //  d.addCreature(cr[i], NORTH, 7, 7);
+    // }
+
+    // d.darwin_print(cout);
+
+
+    Darwin d(10, 10);
+    Species hopper('x');
+    Species food('y');
+
+    //cout << "hopper:  " << hopper.symbol << endl;
+
+
+    hopper.addInstruction(1);
+    food.addInstruction(1);
+
+    //cout << "hopper2:  " << hopper.symbol << endl;
+    Creature h1(&hopper);
+    //cout << "Direction at addCreature0:" << h1.direction << endl;
+    Creature h2(&food);
+    //cout << "Direction at addCreature0.1:" << h1.direction << endl;
+
+    //cout << "hopper3:  " << hopper.symbol << endl;
+
+
+    d.addCreature(h1, SOUTH, 1, 2);
+    //cout << "Direction at addCreature:" << d.board[1][1]->direction << endl;
+    //cout << "hopper4:  " << hopper.symbol << endl;
+    d.addCreature(h2, NORTH, 9, 2);
+    cout << "Direction of Creature1: " << d.board[1][2]->direction << endl;
+    cout << "Direction of Creature2: " << d.board[9][2]->direction << endl;
+    d.darwin_print(cout);
+
+
+    
+    
+    // d.addCreature(monster, NORTH, 0, 0);
+    // d.addCreature(monster, SOUTH, 9, 8);
+    // d.addCreature(monster, EAST, 9, 9);
+
+    //d.addCreature(monster, NORTH, 1, 2);
+
+    d.darwin_run(9, std::cout);
+
 
     cout << "*** Darwin 8x8 ***" << endl;
     /*
