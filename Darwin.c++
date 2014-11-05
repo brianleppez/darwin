@@ -78,7 +78,7 @@ class Creature {
 
 
 		Creature () {
-			cout << "default constructor<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
+			//cout << "default constructor<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
 		}
 
 		// Creature (const Creature& other) :
@@ -87,15 +87,15 @@ class Creature {
 		// 	direction = 1;
 		// }
 
-		Creature(Species* s, int direction) :
+		Creature(Species* s) :
 		species(s), direction(0), turnFlag(false), PC(0)
 		{
 			this->direction = direction;
-			cout << "copy constructor<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
+			//cout << "copy constructor<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
 		}
 
 		void infect(Creature& c) {
-			if(species->symbol == c->species->symbol) {
+			if(species->symbol == c.species->symbol) {
 				species = c.species;
 				PC = 0; 
 			}
@@ -147,18 +147,16 @@ class Darwin {
 			w << endl;
 		}
 		
-		void addCreature(Creature c, int direction, int row, int column) {
+		void addCreature(Creature& c, int direction, int row, int column) {
 			//cout << "AddCreature: direction: " << direction << endl;
 			//cout << "addCreature1: " << c.direction << endl;
-			darwin_print(std::cout);
-			creatures.push_back(c);
-			board[row][column] = &creatures.back();
-			cout << "addCreature3: " << board[row][column]->direction << endl;
-			cout << "addCreature4.1: " << board[1][1]->direction << endl;
+			//darwin_print(std::cout);
+			// creatures.push_back(c);
+			board[row][column] = &c;
+			//cout << "addCreature3: " << board[row][column]->direction << endl;
+			//cout << "addCreature4.1: " << board[1][1]->direction << endl;
 			board[row][column]->direction = direction;
-			cout << "addCreature4.2: " << board[1][1]->direction << endl;
-			cout << "addCreature4.3: " << board[row][column]->direction << endl;
-			darwin_print(std::cout);
+			//darwin_print(std::cout);
 		}
 
 		void darwin_run(int moves, ostream& o) {
@@ -170,17 +168,20 @@ class Darwin {
 				darwinTurnFlag = !darwinTurnFlag;
 			}
 		}
-		void darwin_turn() {
-			for (int i = 0; i < height; ++i) {
-				for (int j = 0; j < width; j++) {
+		void darwin_turn() 
+		{
+			for (int i = 0; i < height; ++i) 
+			{
+				for (int j = 0; j < width; j++) 
+				{
 					
 					
 					if(board[i][j] != 0 )
 					{
-						printf(">>>%d  %d\n", i,j );
+						//printf(">>>%d  %d\n", i,j );
 
-						cout << "turnFlag: " << board[i][j]->turnFlag << "darwinTurn" << darwinTurnFlag<< endl;
-						cout << "direction>: " << board[i][j]->direction << endl;
+						//cout << "turnFlag: " << board[i][j]->turnFlag << "darwinTurn" << darwinTurnFlag<< endl;
+						//cout << "direction>: " << board[i][j]->direction << endl;
 					}
 
 					if (board[i][j] != 0 && board[i][j]->turnFlag == darwinTurnFlag) {
@@ -247,7 +248,7 @@ class Darwin {
 								}	
 								break;
 							case 2: // left
-								board[i][j]->direction = (board[i[j]->direction+1) % 4;
+								board[i][j]->direction = ((board[i][j]->direction) +1) % 4;
 							break;
 							case 3: // right
 								if (board[i][j]->direction == EAST)
@@ -308,6 +309,9 @@ class Darwin {
 											board[i+1][j]->turnFlag = !board[i+1][j]->turnFlag;
 										}
 									break;
+								}
+							break;
+						break;
 
 
 
@@ -322,7 +326,7 @@ class Darwin {
 			}
 		}
 
-		
+	
 		
 		
 };
@@ -354,29 +358,32 @@ int main() {
 
 
 	Darwin d(10, 10);
-	Species hopper('h');
-	Species food('f');
+	Species hopper('x');
+	Species food('y');
 
-	cout << "hopper:  " << hopper.symbol << endl;
+	//cout << "hopper:  " << hopper.symbol << endl;
 
 
 	hopper.addInstruction(1);
+	food.addInstruction(1);
 
-	cout << "hopper2:  " << hopper.symbol << endl;
-	Creature h1(&hopper, SOUTH);
-	cout << "Direction at addCreature0:" << h1.direction << endl;
-	Creature h2(&food, NORTH);
-	cout << "Direction at addCreature0.1:" << h1.direction << endl;
+	//cout << "hopper2:  " << hopper.symbol << endl;
+	Creature h1(&hopper);
+	//cout << "Direction at addCreature0:" << h1.direction << endl;
+	Creature h2(&food);
+	//cout << "Direction at addCreature0.1:" << h1.direction << endl;
 
-	cout << "hopper3:  " << hopper.symbol << endl;
+	//cout << "hopper3:  " << hopper.symbol << endl;
 
 
-	d.addCreature(h1, SOUTH, 1, 1);
-	cout << "Direction at addCreature:" << d.board[1][1]->direction << endl;
-	cout << "hopper4:  " << hopper.symbol << endl;
+	d.addCreature(h1, SOUTH, 1, 2);
+	//cout << "Direction at addCreature:" << d.board[1][1]->direction << endl;
+	//cout << "hopper4:  " << hopper.symbol << endl;
 	d.addCreature(h2, NORTH, 9, 2);
-	cout << "Direction at addCreature2: " << d.board[1][1]->direction << endl;
-	cout << "hopper5:  " << hopper.symbol << endl;
+	cout << "Direction of Creature1: " << d.board[1][2]->direction << endl;
+	cout << "Direction of Creature2: " << d.board[9][2]->direction << endl;
+	d.darwin_print(cout);
+
 
 	
 	
@@ -395,7 +402,7 @@ int main() {
 
 	
 	return 0;
-};
+}
 
 
 
