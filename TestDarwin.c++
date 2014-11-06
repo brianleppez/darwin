@@ -460,3 +460,40 @@ TEST(Darwin, darwin_turn6) {
     ASSERT_EQ(d.board[0][1]->PC, 1);
 
 }
+
+TEST(Darwin, darwin_board) {
+    Darwin d(0, 0);
+    ASSERT_EQ(d.height, 0);
+    ASSERT_EQ(d.width, 0);
+}
+
+TEST(Darwin, darwin_board2) {
+    Darwin d(10, 10);
+    ASSERT_EQ(d.height, 10);
+    ASSERT_EQ(d.width, 10);
+}
+
+TEST(Darwin, darwin_board3) {
+    Darwin d(1, 1987789);
+    ASSERT_EQ(d.height, 1);
+    ASSERT_EQ(d.width, 1987789);
+}
+
+TEST(Darwin, op1) {
+    Species h1('h');
+    Species h2('j');
+    ASSERT_EQ(h1 != h2, true);
+}
+
+TEST(Darwin, op2) {
+    Species h1('j');
+    Species h2('j');
+    ASSERT_EQ(h1 != h2, false);
+}
+
+TEST(Darwin, op3) {
+    Species h1('h');
+    Species h2('h');
+    ASSERT_EQ(h1 != h2, false);
+}
+
