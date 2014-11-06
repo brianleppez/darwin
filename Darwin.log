@@ -1,0 +1,433 @@
+commit cd1c74098fb8fab748b048039eb15f6611002385
+Author: Tomas <tomasrodriguez@utexas.edu>
+Date:   Thu Nov 6 11:16:14 2014 -0600
+
+    Delete .nfs000000000153ebb60000041d
+
+commit 109d29842cc01c51f9cfec9e97c21d68b8bb791d
+Author: Tomas <tomasrodriguez@utexas.edu>
+Date:   Thu Nov 6 11:16:11 2014 -0600
+
+    Delete .nfs000000000153ebb50000041c
+
+commit 35124bbdfe2fda2cfee80ef001ef2f5d8b28c9d7
+Author: Tomas <tomasrodriguez@utexas.edu>
+Date:   Thu Nov 6 11:16:08 2014 -0600
+
+    Delete .nfs000000000153ebb40000041b
+
+commit a4857878398cbf0cf64ce36e8f6e693eba439c2d
+Author: Tomas <tomasrodriguez@utexas.edu>
+Date:   Thu Nov 6 11:16:04 2014 -0600
+
+    Delete .nfs000000000153ebb30000041a
+
+commit c26a0614c6ca3856f77f31e107d68db3a14086cc
+Author: Tomas <tomasrodriguez@utexas.edu>
+Date:   Thu Nov 6 11:16:00 2014 -0600
+
+    Delete .nfs000000000153ebb200000419
+
+commit d90f7227f8cf1cf3232ccb7ae03a6757ee5fdd88
+Author: Tomas <tomasrodriguez@utexas.edu>
+Date:   Thu Nov 6 11:12:14 2014 -0600
+
+    Delete .nfs000000000153ebb000000418
+
+commit 128e40f87dc20883ac7bedb657519931a40c1afe
+Author: Tomas Rodriguez <utomas@cs.utexas.edu>
+Date:   Thu Nov 6 03:18:18 2014 -0600
+
+    added doxygen documentation
+
+commit 7aa86d65e8952356d3e5ee46f56a54c28c927eb2
+Author: Brian Leppez <brianleppez@gmail.com>
+Date:   Thu Nov 6 02:44:30 2014 -0600
+
+    Added 33 tests and best
+
+commit 2e1a9614825e61ce7f114494118893c8c3eee9cf
+Author: Tomas Rodriguez <utomas@cs.utexas.edu>
+Date:   Thu Nov 6 02:44:00 2014 -0600
+
+    more tests
+
+commit 165da7762dee3b58f3c2a14e6dd597e19c3b9c8d
+Merge: aaad666 a787165
+Author: Tomas Rodriguez <utomas@cs.utexas.edu>
+Date:   Thu Nov 6 01:44:43 2014 -0600
+
+    Merge branch 'master' of https://github.com/brianleppez/cs371p-darwin
+
+commit aaad6666835c3920758a395cfd6e2cc4c4004db6
+Author: Tomas Rodriguez <utomas@cs.utexas.edu>
+Date:   Thu Nov 6 01:44:34 2014 -0600
+
+    more test cases
+
+commit a78716559427562c0fdcaf590d7aadf999d5cf1a
+Author: Brian Leppez <brianleppez@gmail.com>
+Date:   Thu Nov 6 01:42:05 2014 -0600
+
+    Added 29 tests
+
+commit bb56f4e0349dc24291d137b1ce7e3a2819e41f2c
+Author: Tomas Rodriguez <utomas@cs.utexas.edu>
+Date:   Thu Nov 6 01:33:22 2014 -0600
+
+    resolved merge conflicts
+
+commit fc5b628f0f2dd1972ef7ecda1cd78c86a7bacd20
+Merge: b0034f7 b9e71a8
+Author: Tomas Rodriguez <utomas@cs.utexas.edu>
+Date:   Thu Nov 6 01:31:26 2014 -0600
+
+    more test cases
+
+commit b0034f7eba02b67d7ed01ed9561d37ebb58400de
+Author: Tomas Rodriguez <utomas@cs.utexas.edu>
+Date:   Thu Nov 6 01:30:51 2014 -0600
+
+    more test cases
+
+commit b9e71a826bc58b5c4f2babca83d4802d90b3f638
+Author: Brian Leppez <brianleppez@gmail.com>
+Date:   Thu Nov 6 01:25:18 2014 -0600
+
+    Added more tests
+
+commit 29bb5278bb00419da880342efcbd1f21578801d8
+Merge: 2d68f14 b9f6efb
+Author: Brian Leppez <brianleppez@gmail.com>
+Date:   Thu Nov 6 01:02:02 2014 -0600
+
+    Merge branch 'master' of https://github.com/brianleppez/cs371p-darwin
+
+commit 2d68f14ef8cc7885289a4885eff44fa0392bebbc
+Author: Brian Leppez <brianleppez@gmail.com>
+Date:   Thu Nov 6 01:01:43 2014 -0600
+
+    Added some test cases
+
+commit b9f6efb4881b26b4e42f868e22007ac7e5083d00
+Author: Tomas Rodriguez <utomas@cs.utexas.edu>
+Date:   Thu Nov 6 00:58:23 2014 -0600
+
+    test case for infect
+
+commit b2a3724f24efb7d15cd1c5c10f025fa1c9eef868
+Author: Tomas Rodriguez <utomas@cs.utexas.edu>
+Date:   Thu Nov 6 00:37:54 2014 -0600
+
+    more test cases, Darwin game working properly
+
+commit 1dd9bc24f2fdd6ef30af2cd77af6ef907006c2e5
+Author: Tomas Rodriguez <utomas@cs.utexas.edu>
+Date:   Wed Nov 5 23:30:40 2014 -0600
+
+    resolving merge conflicts in darwin.c++
+
+commit 825cddfebc59611144a6be86d2f67a42c1c6c06e
+Merge: 8301ba3 8237d00
+Author: Tomas Rodriguez <utomas@cs.utexas.edu>
+Date:   Wed Nov 5 23:29:21 2014 -0600
+
+    merge conflicts
+
+commit 8301ba32470c24bdc5e969f67ce8c49bbdab2cf9
+Author: Tomas Rodriguez <utomas@cs.utexas.edu>
+Date:   Wed Nov 5 23:28:23 2014 -0600
+
+    merge conflict
+
+commit 8237d00ba0a91b86b53d9cddc66c223a04e7825c
+Author: Brian Leppez <brianleppez@gmail.com>
+Date:   Wed Nov 5 23:26:44 2014 -0600
+
+    Fixed cardinal positions
+
+commit 1ed8c346886eda4c4d9f6da022eb305233444f6c
+Author: Tomas Rodriguez <utomas@cs.utexas.edu>
+Date:   Wed Nov 5 22:51:27 2014 -0600
+
+    Resolved Merge conflict on darwin.c++
+
+commit 4607247a6f921690aae836bfe08469516aa781ac
+Merge: 2aa846a 63a9b21
+Author: Tomas Rodriguez <utomas@cs.utexas.edu>
+Date:   Wed Nov 5 22:46:44 2014 -0600
+
+    Merge branch 'master' of https://github.com/brianleppez/cs371p-darwin
+
+commit 2aa846a4a381f55d2fa286ab0f5de9ffd20cef5b
+Author: Tomas Rodriguez <utomas@cs.utexas.edu>
+Date:   Wed Nov 5 22:46:35 2014 -0600
+
+    more tests
+
+commit 63a9b2148c78210896f7a9dadc11d010b7423c56
+Merge: 4054fe8 edd7942
+Author: Brian Leppez <brianleppez@gmail.com>
+Date:   Wed Nov 5 22:44:35 2014 -0600
+
+    resolving merge conflict
+
+commit 4054fe83569a9de18f0041386b9c2cacc82b628b
+Author: Brian Leppez <brianleppez@gmail.com>
+Date:   Wed Nov 5 22:43:45 2014 -0600
+
+    Added Darwin.h and cleaned up Darwin.c++
+
+commit edd7942ced9914a3dd7bc3bd7254526f7dcf5f27
+Author: Tomas Rodriguez <utomas@cs.utexas.edu>
+Date:   Wed Nov 5 22:25:46 2014 -0600
+
+    more tests: 7 test cases
+
+commit 4befe37a475a9f47a3a86864032f39eda11b50f6
+Author: Tomas Rodriguez <utomas@cs.utexas.edu>
+Date:   Wed Nov 5 22:06:35 2014 -0600
+
+    test cases for darwinPrint and species addInstruction
+
+commit 6495d750e05c25635e0236b58885ffedc8f531dc
+Author: Tomas Rodriguez <utomas@cs.utexas.edu>
+Date:   Wed Nov 5 21:14:42 2014 -0600
+
+    fixed multiple bugs in instructions, and infect function.. Also added incrementPC function to increment PC and mod according to the size of the set of instructions
+
+commit f87df6c1fab97be2da12bf325e12895b8ad3026a
+Author: Tomas Rodriguez <utomas@cs.utexas.edu>
+Date:   Wed Nov 5 19:57:27 2014 -0600
+
+    RunDarwing working
+
+commit 839fa00d595cae5f0c64304faf05eb4c65a16569
+Author: Brian Leppez <brianleppez@wireless-10-147-140-99.public.utexas.edu>
+Date:   Wed Nov 5 19:42:54 2014 -0600
+
+    Solved the program and added best
+
+commit a57521e892a6c50452635c96f8dd34a88fd5f9f9
+Author: Tomas Rodriguez <tomasro27@yahoo.com>
+Date:   Wed Nov 5 17:43:25 2014 -0600
+
+    changed infect function to infect other creature instead of getting infected by other creature
+
+commit 175f9fda8f290661c00c4064e331d30fee91d15e
+Author: Tomas Rodriguez <tomasro27@yahoo.com>
+Date:   Wed Nov 5 17:36:36 2014 -0600
+
+    updated if_enemy instruction
+
+commit 4ed29268c657758d57e49e12422063ee2eb33456
+Author: Tomas Rodriguez <tomasro27@yahoo.com>
+Date:   Wed Nov 5 17:34:45 2014 -0600
+
+    updated if_random instruction
+
+commit 48a750c91bfdaf15d342283713ed3b30bcb20b7d
+Author: Tomas Rodriguez <tomasro27@yahoo.com>
+Date:   Wed Nov 5 17:31:18 2014 -0600
+
+    First test case passing
+
+commit 990cb3a9ba04a8e93db500ab899dbdbcc02b8822
+Author: Tomas Rodriguez <tomasro27@yahoo.com>
+Date:   Wed Nov 5 17:15:27 2014 -0600
+
+    finished implementing if_wall, added first test case
+
+commit 640fd6c74a718c8db3e62479e1632a7a46d83b4a
+Author: Tomas Rodriguez <tomasro27@yahoo.com>
+Date:   Wed Nov 5 16:55:52 2014 -0600
+
+    finished implementing if_wall instruction
+
+commit 52ae49a6bbfdaa81815a567de99a68e44b07c93b
+Author: Tomas Rodriguez <tomasro27@yahoo.com>
+Date:   Wed Nov 5 16:53:04 2014 -0600
+
+    implemented if_empty function
+
+commit da15c8d68eb4f46deb120f527655ef6f861ad62e
+Author: Tomas Rodriguez <tomasro27@yahoo.com>
+Date:   Wed Nov 5 16:42:59 2014 -0600
+
+    updating variable
+
+commit 321401ae4ce3894576c486685d0590d1042821db
+Author: Tomas Rodriguez <utomas@cs.utexas.edu>
+Date:   Wed Nov 5 16:39:58 2014 -0600
+
+    Implemented GO instruction
+
+commit 9dfffdce9a233588f040fab99ce13a076902c7ed
+Author: Tomas Rodriguez <utomas@cs.utexas.edu>
+Date:   Wed Nov 5 16:33:43 2014 -0600
+
+    added std::pair to vector of instructions
+
+commit 1c58cc6ae5d75ee33412bb57f7a8a7bd5a5e930d
+Author: Brian Leppez <brianleppez@wireless-10-147-249-74.public.utexas.edu>
+Date:   Wed Nov 5 14:49:19 2014 -0600
+
+    Implemented rest of functions, missing some details
+
+commit 7536f086ea70c868a5584b170b6e0e0610e770d5
+Author: Brian Leppez <brianleppez@gmail.com>
+Date:   Wed Nov 5 14:07:58 2014 -0600
+
+    Started implementing If empty
+
+commit 780d98956ff1acc7ce5f19a82c5c1ee97cc8d6aa
+Author: Brian Leppez <brianleppez@gmail.com>
+Date:   Wed Nov 5 13:29:02 2014 -0600
+
+    started implementing infect
+
+commit a91b58f84dac9d1b8307c10e12b83a6b7a13d2a0
+Author: Brian Leppez <brianleppez@gmail.com>
+Date:   Wed Nov 5 13:06:22 2014 -0600
+
+    Got it working again
+
+commit 6b45508da3f6e9785501dabeefffb552009c9d53
+Merge: 887a0d5 18b095f
+Author: Tomas Rodriguez <utomas@cs.utexas.edu>
+Date:   Wed Nov 5 12:12:26 2014 -0600
+
+    Merge branch 'master' of https://github.com/brianleppez/cs371p-darwin
+
+commit 887a0d50731e02b7a8431ed918ad15c63b2e2eb0
+Author: Tomas Rodriguez <utomas@cs.utexas.edu>
+Date:   Wed Nov 5 12:12:17 2014 -0600
+
+    merge commit
+
+commit 18b095fdb42af8e429cbca7d8b6fa76d35df4445
+Author: Brian Leppez <brianleppez@gmail.com>
+Date:   Wed Nov 5 11:59:02 2014 -0600
+
+    Added left, right and started infect
+
+commit 5ce6c8759bd17293e5b40e5955ff618ce11480c0
+Author: Tomas Rodriguez <utomas@cs.utexas.edu>
+Date:   Wed Nov 5 00:22:18 2014 -0600
+
+    Have issue with not create a new creature object
+
+commit ee921898f1ccbd586712bdcf436cff50fa3d6275
+Author: Tomas Rodriguez <utomas@cs.utexas.edu>
+Date:   Tue Nov 4 21:52:52 2014 -0600
+
+    commiting to debug
+
+commit 6683d9d7c7b8984ea01d4796a041b12faf5b773f
+Author: Brian Leppez <brianleppez@gmail.com>
+Date:   Tue Nov 4 20:08:31 2014 -0600
+
+    started adding for functions to the program
+
+commit b670b147651aedf5c24d95c8f1211c9468302383
+Merge: 4969063 75f6668
+Author: Brian Leppez <brianleppez@gmail.com>
+Date:   Tue Nov 4 20:07:13 2014 -0600
+
+    Merge branch 'master' of https://github.com/brianleppez/cs371p-darwin
+
+commit 4969063e49b7abd7c462494a0ee184d864bbfcf0
+Author: Brian Leppez <brianleppez@gmail.com>
+Date:   Tue Nov 4 20:06:52 2014 -0600
+
+    started adding for functions to the program
+
+commit 25d75502bda143864de1169f11696383cfa45d91
+Author: Brian Leppez <brianleppez@gmail.com>
+Date:   Tue Nov 4 20:06:24 2014 -0600
+
+    started adding for functions to the program
+
+commit 75f66689479cc0e30af75205c9940a932f6ea130
+Author: Brian Leppez <brianleppez@Brians-MBP.attlocal.net>
+Date:   Mon Nov 3 22:13:35 2014 -0600
+
+    New Design is now working. Working on the RunDarwin interface
+
+commit 5d305cb863edc8a4005f1d167080aa710664c867
+Author: Brian Leppez <brianleppez@wireless-10-147-94-65.public.utexas.edu>
+Date:   Mon Nov 3 15:39:57 2014 -0600
+
+    Got it working
+
+commit cca61c950d5e9458303c63faef85f5934bc2cd23
+Author: Brian Leppez <brianleppez@gmail.com>
+Date:   Mon Nov 3 13:45:38 2014 -0600
+
+    Still not compiling
+
+commit de381634af65bc419f9fd0d29d341c02d476611d
+Author: Brian Leppez <brianleppez@gmail.com>
+Date:   Mon Nov 3 13:27:45 2014 -0600
+
+    Changed design but does not compile
+
+commit c338ae07f391291aaf7102dc520711873deb6700
+Author: Brian Leppez <brianleppez@gmail.com>
+Date:   Mon Nov 3 13:27:19 2014 -0600
+
+    Changed design but does not compile
+
+commit 69f7df24da5e77c2f14e748a54adf7a7f9f529aa
+Author: Brian Leppez <brianleppez@wireless-10-147-206-102.public.utexas.edu>
+Date:   Mon Nov 3 12:33:24 2014 -0600
+
+    Changed the design of creature
+
+commit 48de50654974ba9ff20749748d3155d33e64ac4b
+Author: Brian Leppez <brianleppez@gmail.com>
+Date:   Fri Oct 31 16:33:27 2014 -0500
+
+    Added an addCreature function to Darwin
+
+commit e6564e151ac3b3e7ddc37b280621932460fe1db4
+Author: Brian Leppez <brianleppez@gmail.com>
+Date:   Fri Oct 31 15:54:09 2014 -0500
+
+    Implemented the printing of board.
+
+commit 855b3d3c3b1b4485dc828601136d7891900b94ee
+Author: Brian Leppez <brianleppez@gmail.com>
+Date:   Fri Oct 31 13:22:21 2014 -0500
+
+    Added UML and started design Instruction
+
+commit b978473b6be832783ff7db2bd626ec190e82cf0b
+Author: Brian Leppez <brianleppez@gmail.com>
+Date:   Wed Oct 29 13:50:56 2014 -0500
+
+    Renamed README
+
+commit 5b72ab4bcb028c232d3986ddc252fb92ac9d5aef
+Author: Brian Leppez <brianleppez@gmail.com>
+Date:   Wed Oct 29 18:46:49 2014 -0500
+
+    Create README.md
+
+commit e5a794877e7e7dbf844949d5acd418719e5597a9
+Author: Brian Leppez <brianleppez@gmail.com>
+Date:   Wed Oct 29 11:17:21 2014 -0500
+
+    Added a README
+
+commit 718f309a2e6ae100581ea5f1b2db422b14e13dd6
+Author: Brian Leppez <brianleppez@gmail.com>
+Date:   Wed Oct 29 11:16:37 2014 -0500
+
+    Create README.md
+
+commit 036d1b15073b8f99dff8263b0663fb71e494877b
+Author: Brian Leppez <brianleppez@gmail.com>
+Date:   Wed Oct 29 11:16:12 2014 -0500
+
+    Added Skeleton files
