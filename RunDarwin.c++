@@ -121,6 +121,18 @@ int main () {
         trap.addInstruction(GO, 0);
         trap.addInstruction(INFECT);
         trap.addInstruction(GO, 0);
+
+        Species best('b');
+
+        best.addInstruction(IF_ENEMY, 7);  //0
+        best.addInstruction(IF_EMPTY, 5);  //1 
+        best.addInstruction(LEFT);         //2
+        best.addInstruction(GO, 0);        //3   
+        best.addInstruction(GO, 0);         //4
+        best.addInstruction(HOP);          //5
+        best.addInstruction(GO, 0);        //6
+        best.addInstruction(INFECT);       //7
+        best.addInstruction(GO, 0);         //8
 /*
         *** Darwin 8x8 *** START BOARD
                 Turn = 0.
@@ -341,8 +353,55 @@ int main () {
     // with best
     // ------------
 
-    // cout << "*** Darwin 72x72 with Best ***" << endl;
-    // srand(0);
+    cout << "*** Darwin 72x72 with Best ***" << endl;
+    srand(0);
+    {
+        int n = 72;
+        int total = n*n;
+        Darwin d(72, 72);
+        std::vector<Creature> foods (10, Creature (&food));
+        for(int i = 0; i < 10; ++i){
+            int pos = rand() % total;
+            int dir = rand() % 4;
+            
+            d.addCreature(foods[i], dir, (pos/n), (pos%n)); 
+        }
+
+        std::vector<Creature> hoppers (10, Creature (&hopper));
+        for(int i = 0; i < 10; ++i){
+            int pos = rand() % total;
+            int dir = rand() % 4;
+            
+            d.addCreature(hoppers[i], dir, (pos/n), (pos%n)); 
+        }
+
+        std::vector<Creature> rovers (10, Creature (&rover));
+        for(int i = 0; i < 10; ++i){
+            int pos = rand() % total;
+            int dir = rand() % 4;
+            
+            d.addCreature(rovers[i], dir, (pos/n), (pos%n)); 
+        }
+
+        std::vector<Creature> traps (10, Creature (&trap));
+        for(int i = 0; i < 10; ++i){
+            int pos = rand() % total;
+            int dir = rand() % 4;
+            
+            d.addCreature(traps[i], dir, (pos/n), (pos%n)); 
+        }
+
+        std::vector<Creature> bests (10, Creature (&best));
+        for(int i = 0; i < 10; ++i){
+            int pos = rand() % total;
+            int dir = rand() % 4;
+            
+            d.addCreature(bests[i], dir, (pos/n), (pos%n)); 
+        }
+
+
+        d.darwin_run(1000, std::cout);
+    }
     /*
     Randomly place the following creatures facing randomly.
     Call rand(), mod it with 5184 (72x72), and use that for the position
