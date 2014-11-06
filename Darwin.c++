@@ -28,27 +28,8 @@ const int NORTH = 1; // UP
 const int WEST = 2; // LEFT
 const int SOUTH = 3; // DOWN
 
-// enum Direction {EAST = 0, NORTH = 1, WEST = 2, SOUTH = 3};
 
 
-
-class Instruction {
-	public:
-		int command;
-		int target;
-
-		Instruction(int c, int t = 0) :
-		command(c), target(t)
-		{}
-
-		bool isInstructionControl() {
-		if (command == HOP || command == LEFT || command == RIGHT || command == INFECT) 
-			return false;
-		return true;
-	}
-};
-
-	
 
 class Species {
 	public:
@@ -111,9 +92,7 @@ class Creature {
 		void incrementPC()
 		{
 			PC = (PC+1) % (species->InstructionSet.size()-1);
-		}
-
-		// int receiveInstruction () {
+		}		// int receiveInstruction () {
 		// 	return species->InstructionSet[PC];
 		// }
 };
