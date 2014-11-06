@@ -231,3 +231,70 @@ TEST(Darwin, creatures3)
     ASSERT_EQ(c2.species->InstructionSet[10].second, 0);
 
 }
+
+TEST(Darwin, darwin_turn) {
+    Darwin d(2, 2);
+    Species food('f');
+    food.addInstruction(LEFT);
+    food.addInstruction(GO, 0);
+    Creature c(&food);
+    d.addCreature(c, NORTH, 1, 1);
+    d.darwin_turn();
+    ASSERT_EQ(d.board[1][1]->species->symbol, 'f');
+}
+
+TEST(Darwin, darwin_turn2) {
+    Darwin d(2, 2);
+    Species food('f');
+    food.addInstruction(LEFT);
+    food.addInstruction(GO, 0);
+    Creature c(&food);
+    d.addCreature(c, NORTH, 1, 1);
+    d.darwin_turn();
+    ASSERT_EQ(d.board[1][1]->direction, WEST);
+}
+
+TEST(Darwin, darwin_turn3) {
+    Darwin d(2, 2);
+    Species food('f');
+    food.addInstruction(LEFT);
+    food.addInstruction(GO, 0);
+    Creature c(&food);
+    d.addCreature(c, NORTH, 1, 1);
+    d.darwin_turn();
+    ASSERT_EQ(d.board[1][1]->PC, 1);
+}
+
+TEST(Darwin, darwin_turn4) {
+    Darwin d(2, 2);
+    Species hopper('h');
+    hopper.addInstruction(HOP);
+    hopper.addInstruction(GO, 0);
+    Creature c(&hopper);
+    d.addCreature(c, NORTH, 1, 1);
+    d.darwin_turn();
+    ASSERT_EQ(d.board[0][1]->species->symbol, 'h');
+}
+
+TEST(Darwin, darwin_turn5) {
+    Darwin d(2, 2);
+    Species hopper('h');
+    hopper.addInstruction(HOP);
+    hopper.addInstruction(GO, 0);
+    Creature c(&hopper);
+    d.addCreature(c, NORTH, 1, 1);
+    d.darwin_turn();
+    ASSERT_EQ(d.board[0][1]->direction, NORTH);
+}
+
+
+TEST(Darwin, darwin_turn6) {
+    Darwin d(2, 2);
+    Species hopper('h');
+    hopper.addInstruction(HOP);
+    hopper.addInstruction(GO, 0);
+    Creature c(&hopper);
+    d.addCreature(c, NORTH, 1, 1);
+    d.darwin_turn();
+    ASSERT_EQ(d.board[0][1]->PC, 1);
+}
