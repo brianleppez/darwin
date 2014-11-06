@@ -85,7 +85,7 @@ int main () {
      9: go 1
      10: infect
      11: go 0
-
+    */
 
     // ----------
     // darwin 8x8
@@ -131,8 +131,8 @@ int main () {
                 5 ........
                 6 ........
                 7 .......f
-*/
 
+*/
 
         //cout << "darwin 8x8 debugging: " << d.board[3][3]->direction << endl;
 
@@ -158,7 +158,7 @@ int main () {
 
     // d.darwin_print(cout);
 
-     {
+     //{
         /*
         Darwin d(10, 10);
         Species hopper('h');
@@ -186,7 +186,7 @@ int main () {
         cout << "Direction of Creature1: " << d.board[1][2]->direction << endl;
         cout << "Direction of Creature2: " << d.board[9][2]->direction << endl;
         d.darwin_print(cout);
-        */
+        
 
 
         
@@ -339,4 +339,6 @@ int main () {
     Print every 100th grid after that (i.e. 100, 200, 300...1000).
     */
 
-    return 0;}
+    return 0;
+
+}
