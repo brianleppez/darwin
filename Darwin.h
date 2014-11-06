@@ -20,9 +20,9 @@ const int IF_RANDOM = 7;
 const int IF_ENEMY = 8;
 const int GO = 9;
 
-const int EAST = 0; // RIGHT
+const int WEST = 0; // LEFT
 const int NORTH = 1; // UP
-const int WEST = 2; // LEFT
+const int EAST = 2; // RIGHT
 const int SOUTH = 3; // DOWN
 
 // Classes
