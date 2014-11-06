@@ -74,9 +74,14 @@ void Darwin::darwin_run(int moves, std::ostream& o) {
 void Darwin::darwin_turn() {
 	for (int i = 0; i < height; ++i) {
 		for (int j = 0; j < width; j++) {
+			
+				
 			while (board[i][j] != 0 && board[i][j]->turnFlag == darwinTurnFlag) {
 				int instruction = board[i][j]->species->InstructionSet[board[i][j]->PC].first;
+
 				switch(instruction) {
+				
+
 					case 1: // HOP
 						switch(board[i][j]->direction)
 						{
@@ -144,7 +149,7 @@ void Darwin::darwin_turn() {
 					
 					case 2: // left
 
-							if (board[i][j]->direction == WEST) {
+						if (board[i][j]->direction == WEST) {
 								board[i][j]->direction = SOUTH;
 								board[i][j]->turnFlag = !board[i][j]->turnFlag;
 						}
@@ -169,7 +174,7 @@ void Darwin::darwin_turn() {
 						switch(board[i][j]->direction)
 						{
 							case EAST:
-								if(j < width-1 && board[i][j+1] != 0)
+								if(j < width-1 && board[i][j+1] != 0 )
 								{
 									board[i][j]->infect(board[i][j+1]);
 									board[i][j]->turnFlag = !board[i][j]->turnFlag;
@@ -180,7 +185,7 @@ void Darwin::darwin_turn() {
 							break;
 							
 							case NORTH:
-								if(i > 0 && board[i-1][j] != 0 && board[i-1][j])
+								if(i > 0 && board[i-1][j] != 0 && board[i-1][j] && board[i-1][j]->species != board[i][j]->species)
 								{
 									board[i][j]->infect(board[i-1][j]);
 									board[i][j]->turnFlag = !board[i][j]->turnFlag;
@@ -249,12 +254,16 @@ void Darwin::darwin_turn() {
 					break;
 
 					case 7: // if_random
+						//std::cout << "random: " << i << " ,"  << j << std::endl;
+						//std::cout << "direction: " << board[i][j]->direction << std::endl;
 						if (rand() % 2 == 1) {
 							// go to line n
+							//std::cout << "go to n right" << std::endl;
 							board[i][j]->PC = board[i][j]->species->InstructionSet[board[i][j]->PC].second;
 						}
 						else {
 							// go to next line
+							//std::cout << "pc ++" << std::endl;
 							board[i][j]->incrementPC();
 						}
 					break;

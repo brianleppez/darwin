@@ -374,7 +374,7 @@ TEST(Darwin, darwin_run3)
 
     d.addCreature(c1, EAST, 0, 0);
 
-    Species food('h');
+    Species food('f');
     food.addInstruction(LEFT);
     food.addInstruction(GO, 0);
     Creature c2(&food);
@@ -383,14 +383,115 @@ TEST(Darwin, darwin_run3)
 
     std::ostringstream w1;
     d.darwin_print(w1);
-    ASSERT_EQ("Turn = 0.\n  0123\n0 r..h\n1 ....\n2 ....\n3 ....\n\n", w1.str());
+    ASSERT_EQ("Turn = 0.\n  0123\n0 r..f\n1 ....\n2 ....\n3 ....\n\n", w1.str());
 
     std::ostringstream w2;
     d.darwin_run(3, w2);
-    ASSERT_EQ("Turn = 0.\n  0123\n0 r..h\n1 ....\n2 ....\n3 ....\n\nTurn = 1.\n  0123\n0 .r.h\n1 ....\n2 ....\n3 ....\n\nTurn = 2.\n  0123\n0 ..rh\n1 ....\n2 ....\n3 ....\n\nTurn = 3.\n  0123\n0 ..rr\n1 ....\n2 ....\n3 ....\n\n", w2.str());
+    ASSERT_EQ("Turn = 0.\n  0123\n0 r..f\n1 ....\n2 ....\n3 ....\n\nTurn = 1.\n  0123\n0 .r.f\n1 ....\n2 ....\n3 ....\n\nTurn = 2.\n  0123\n0 ..rf\n1 ....\n2 ....\n3 ....\n\nTurn = 3.\n  0123\n0 ..rr\n1 ....\n2 ....\n3 ....\n\n", w2.str());
 
 
 }
+
+TEST(Darwin, darwin_run4)
+{
+    Darwin d(3,3);
+    ASSERT_EQ(3, d.height);        
+    ASSERT_EQ(3, d.width);    
+    ASSERT_EQ(0, d.turn);
+    ASSERT_EQ(0, d.darwinTurnFlag);
+    ASSERT_EQ(3, d.board.size());
+    ASSERT_EQ(3, d.board[0].size());
+
+    Species rover('r');
+    rover.addInstruction(IF_ENEMY, 9);  //0
+    rover.addInstruction(IF_EMPTY, 7);  //1
+    rover.addInstruction(IF_RANDOM, 5); //2
+    rover.addInstruction(LEFT);         //3
+    rover.addInstruction(GO, 0);        //4
+    rover.addInstruction(RIGHT);        //5
+    rover.addInstruction(GO, 0);         //6
+    rover.addInstruction(HOP);          //7
+    rover.addInstruction(GO, 0);        //8
+    rover.addInstruction(INFECT);       //9
+    rover.addInstruction(GO, 0);        //10
+
+    Creature c1(&rover);
+    Creature c2(&rover);
+    Creature c3(&rover);
+    Creature c4(&rover);
+
+    d.addCreature(c1, EAST, 0, 1);
+    d.addCreature(c2, WEST, 1, 0);
+    d.addCreature(c3, NORTH, 1, 2);
+    d.addCreature(c4, SOUTH, 2, 1);
+
+
+    Species food('f');
+    food.addInstruction(LEFT);
+    food.addInstruction(GO, 0);
+    Creature c5(&food);
+    Creature c6(&food);
+    Creature c7(&food);
+    Creature c8(&food);
+    Creature c9(&food);
+
+    d.addCreature(c5, SOUTH, 0, 0);
+    d.addCreature(c6, SOUTH, 0, 2);
+    d.addCreature(c7, SOUTH, 1, 1);
+    d.addCreature(c8, SOUTH, 2, 0);
+    d.addCreature(c9, SOUTH, 2, 2);
+
+    std::ostringstream w1;
+    d.darwin_print(w1);
+    ASSERT_EQ("Turn = 0.\n  012\n0 frf\n1 rfr\n2 frf\n\n", w1.str());
+
+    std::ostringstream w2;
+    d.darwin_run(40, w2);
+
+
+     std::ostringstream w3;
+     d.darwin_print(w3);
+    ASSERT_EQ("Turn = 40.\n  012\n0 rrr\n1 rrr\n2 rrr\n\n", w3.str());
+}
+
+
+TEST(Darwin, darwin_run5)
+{
+    Darwin d(4,4);
+    ASSERT_EQ(4, d.height);        
+    ASSERT_EQ(4, d.width);    
+    ASSERT_EQ(0, d.turn);
+    ASSERT_EQ(0, d.darwinTurnFlag);
+    ASSERT_EQ(4, d.board.size());
+    ASSERT_EQ(4, d.board[0].size());
+
+    Species hopper('h');
+    hopper.addInstruction(HOP);
+    hopper.addInstruction(GO, 0);
+
+    Creature c1(&hopper);
+    Creature c2(&hopper);
+    Creature c3(&hopper);
+    Creature c4(&hopper);
+
+    d.addCreature(c1, SOUTH, 0, 0);
+    d.addCreature(c2, WEST, 0, 3);
+    d.addCreature(c3, EAST, 3, 0);
+    d.addCreature(c4, NORTH, 3, 3);
+
+    std::ostringstream w1;
+    d.darwin_print(w1);
+    ASSERT_EQ("Turn = 0.\n  0123\n0 h..h\n1 ....\n2 ....\n3 h..h\n\n", w1.str());
+
+    std::ostringstream w2;
+    d.darwin_run(3, w2);
+
+
+     std::ostringstream w3;
+     d.darwin_print(w3);
+    ASSERT_EQ("Turn = 3.\n  0123\n0 h..h\n1 ....\n2 ....\n3 h..h\n\n", w3.str());
+}
+
 
 
 TEST(Darwin, darwin_turn) {
