@@ -23,7 +23,7 @@ void Creature::infect(Creature* other) {
 	}
 }
 
-void Creature:: incrementPC() {PC = (PC+1) % (species->InstructionSet.size()-1);}
+void Creature:: incrementPC() {PC = (PC+1) % (species->InstructionSet.size());}
 
 
 Darwin::Darwin (int height, int width) :
@@ -76,10 +76,8 @@ void Darwin::darwin_turn() {
 						switch(board[i][j]->direction)
 						{
 							case EAST:
-								
 								if(j < width-1 && board[i][j+1] == 0)
 								{
-									//std::cout << "east1" << endl;
 									board[i][j+1] = board[i][j];
 									board[i][j] = 0;
 									board[i][j+1]->incrementPC();
@@ -140,16 +138,10 @@ void Darwin::darwin_turn() {
 					break;
 					
 					case 2: // left
-						board[i][j]->direction = ((board[i][j]->direction) +1) % 4;
-						board[i][j]->turnFlag = !board[i][j]->turnFlag;
-						board[i][j]->incrementPC();
 
-					break;
-					
-					case 3: // right
-						if (board[i][j]->direction == EAST) {
-							board[i][j]->direction = SOUTH;
-							board[i][j]->turnFlag = !board[i][j]->turnFlag;
+							if (board[i][j]->direction == WEST) {
+								board[i][j]->direction = SOUTH;
+								board[i][j]->turnFlag = !board[i][j]->turnFlag;
 						}
 						else {
 							board[i][j]->direction--;
@@ -158,6 +150,14 @@ void Darwin::darwin_turn() {
 
 						board[i][j]->incrementPC();
 
+
+
+					break;
+					
+					case 3: // right
+						board[i][j]->direction = ((board[i][j]->direction) +1) % 4;
+						board[i][j]->turnFlag = !board[i][j]->turnFlag;
+						board[i][j]->incrementPC();
 					break;
 					
 					case 4: // infect
