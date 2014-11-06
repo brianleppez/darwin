@@ -108,4 +108,16 @@ TEST(Darwin, creatures2)
         rover.addInstruction(INFECT);       //9
         rover.addInstruction(GO, 0);        //10
     Creature c1(&rover);
+    ASSERT_EQ(c1.PC, 0);
+    ASSERT_EQ(c1.turnFlag, false);
+    ASSERT_EQ(c1.direction, 0);
+    ASSERT_EQ(c1.species->symbol, 'r');
+    for(int i = 1; i < 30; i++)
+    {
+    	cout << "ASDFASDF" << endl;
+    	c1.incrementPC();
+    	ASSERT_EQ(i%11, c1.PC);
+
+    }
+    
 }

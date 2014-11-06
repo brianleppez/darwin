@@ -91,7 +91,7 @@ class Creature {
 
 		void incrementPC()
 		{
-			PC = (PC+1) % (species->InstructionSet.size()-1);
+			PC = (PC+1) % (species->InstructionSet.size());
 		}		// int receiveInstruction () {
 		// 	return species->InstructionSet[PC];
 		// }
