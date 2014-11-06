@@ -103,9 +103,14 @@ class Creature {
 		void infect(Creature* other) {
 			if(species->symbol != other->species->symbol) {
 				other->species = species;
-				PC = 0; 
+				other->PC = 0; 
 			}
 
+		}
+
+		void incrementPC()
+		{
+			PC = (PC+1) % (species->InstructionSet.size()-1);
 		}
 
 		// int receiveInstruction () {
@@ -167,7 +172,7 @@ class Darwin {
 
 		void darwin_run(int moves, ostream& o) {
 
-			cout << "darwin_run "<< endl;
+			//cout << "darwin_run "<< endl;
 			darwin_print(o);
 			while(turn < moves) {
 				darwin_turn();
@@ -185,13 +190,14 @@ class Darwin {
 					while (board[i][j] != 0 && board[i][j]->turnFlag == darwinTurnFlag) {
 						
 						int instruction = board[i][j]->species->InstructionSet[board[i][j]->PC].first;
-						//cout << "Creature position: " << i << " " << j << " PC: " << board[i][j]->PC << endl;
+						//cout << "Creature: " << board[i][j]->species->symbol << " position: " << i << " " << j << " PC: " << board[i][j]->PC << endl;
 
 						
 
 						switch(instruction)
 						{
 							case 1: // HOP
+								//cout << "HOP: " << "pos: " << i << ", " << j << endl;
 								switch(board[i][j]->direction)
 								{
 									case EAST:
@@ -201,11 +207,11 @@ class Darwin {
 											//std::cout << "east1" << endl;
 											board[i][j+1] = board[i][j];
 											board[i][j] = 0;
-											board[i][j+1]->PC++;
+											board[i][j+1]->incrementPC();
 											board[i][j+1]->turnFlag = !board[i][j+1]->turnFlag;
 										}
 										else {
-											board[i][j]->PC++;
+											board[i][j]->incrementPC();
 											board[i][j]->turnFlag = !board[i][j]->turnFlag;
 
 										}
@@ -219,13 +225,13 @@ class Darwin {
 											//std::cout << "north1" << endl;
 											board[i-1][j] = board[i][j];
 											board[i][j] = 0;
-											board[i-1][j]->PC++;
+											board[i-1][j]->incrementPC();
 											//cout << "north turnFlag: " << board[i-1][j]->turnFlag << endl;
 											board[i-1][j]->turnFlag = !board[i-1][j]->turnFlag;
 											//cout << "north turnFlag2: " << board[i-1][j]->turnFlag << endl;
 										}
 										else {
-											board[i][j]->PC++;
+											board[i][j]->incrementPC();
 											board[i][j]->turnFlag = !board[i][j]->turnFlag;
 										}
 									break;
@@ -238,11 +244,11 @@ class Darwin {
 											//std::cout << "west1" << endl;
 											board[i][j-1] = board[i][j];
 											board[i][j] = 0;
-											board[i][j-1]->PC++;
+											board[i][j-1]->incrementPC();
 											board[i][j-1]->turnFlag = !board[i][j-1]->turnFlag;
 										}
 										else {
-											board[i][j]->PC++;
+											board[i][j]->incrementPC();
 											board[i][j]->turnFlag = !board[i][j]->turnFlag;
 										}
 									break;
@@ -255,11 +261,11 @@ class Darwin {
 											//std::cout << "south1" << endl;
 											board[i+1][j] = board[i][j];
 											board[i][j] = 0;
-											board[i+1][j]->PC++;
+											board[i+1][j]->incrementPC();
 											board[i+1][j]->turnFlag = !board[i+1][j]->turnFlag;
 										}
 										else {
-											board[i][j]->PC++;
+											board[i][j]->incrementPC();
 											board[i][j]->turnFlag = !board[i][j]->turnFlag;
 										}
 									break;
@@ -269,13 +275,15 @@ class Darwin {
 							break;
 							
 							case 2: // left
-							
+								//cout << "LEFT: " << "pos: " << i << ", " << j << endl;
 								board[i][j]->direction = ((board[i][j]->direction) +1) % 4;
 								board[i][j]->turnFlag = !board[i][j]->turnFlag;
+								board[i][j]->incrementPC();
+								//cout << "LEFT2: " << "pos: " << i << ", " << j << endl;
 							break;
 							
 							case 3: // right
-								
+								//cout << "RIGHT: " << "pos: " << i << ", " << j << endl;
 								if (board[i][j]->direction == EAST) {
 									board[i][j]->direction = SOUTH;
 									board[i][j]->turnFlag = !board[i][j]->turnFlag;
@@ -284,10 +292,13 @@ class Darwin {
 									board[i][j]->direction--;
 									board[i][j]->turnFlag = !board[i][j]->turnFlag;
 								}
+
+								board[i][j]->incrementPC();
+
 							break;
 							
 							case 4: // infect
-								
+								//cout << "INFECT: " << "pos: " << i << ", " << j << endl;
 								switch(board[i][j]->direction)
 								{
 									case EAST:
@@ -341,10 +352,14 @@ class Darwin {
 										}
 									break;
 								}
+
+								board[i][j]->incrementPC();
 							break;
 
 							case 5: // if_empty
-								
+								//cout << "IF_EMPTY: " << "pos: " << i << ", " << j << endl;
+
+
 								if ((board[i][j]->direction == EAST && j < width -1 && board[i][j+1] == 0) ||
 									(board[i][j]->direction == NORTH && i > 0 && board[i-1][j] == 0) ||
 									(board[i][j]->direction == WEST && j > 0 && board[i][j-1] == 0) ||
@@ -355,13 +370,13 @@ class Darwin {
 								}
 								else
 								{
-									board[i][j]->PC++;
+									board[i][j]->incrementPC();
 								}
 
 							break;
 
 							case 6: // if_wall
-								
+								//cout << "IF_WALL: " << "pos: " << i << ", " << j << endl;
 								if ((board[i][j]->direction == EAST && j == width -1) ||
 									(board[i][j]->direction == NORTH && i == 0) ||
 									(board[i][j]->direction == WEST && j == 0) ||
@@ -372,24 +387,24 @@ class Darwin {
 								}
 								else
 								{
-									board[i][j]->PC++;
+									board[i][j]->incrementPC();
 								}
 							break;
 
 							case 7: // if_random
-								
+								//cout << "IF_RANDOM: " << "pos: " << i << ", " << j << endl;
 								if (rand() % 2 == 1) {
 									// go to line n
 									board[i][j]->PC = board[i][j]->species->InstructionSet[board[i][j]->PC].second;
 								}
 								else {
 									// go to next line
-									board[i][j]->PC++;
+									board[i][j]->incrementPC();
 								}
 							break;
 
 							case 8: // if_enemy
-								
+								//cout << "IF_ENEMY: " << "pos: " << i << ", " << j << endl;
 								if ((board[i][j]->direction == WEST && j > 0 && board[i][j-1] != 0 && board[i][j-1]->species != board[i][j]->species) || \
                         			(board[i][j]->direction == NORTH && i > 0 && board[i-1][j] != 0 && board[i-1][j]->species != board[i][j]->species) || \
                         			(board[i][j]->direction == EAST && j < width - 1 && board[i][j+1] != 0 && board[i][j+1]->species != board[i][j]->species)  || \
@@ -400,12 +415,13 @@ class Darwin {
 								}
 								else {
 									// go to next line
-									board[i][j]->PC++;
+									board[i][j]->incrementPC();
 								}
 							break;
 
 							case 9:
 								// GO to line N
+							//cout << "GO: " << "pos: " << i << ", " << j << endl;
 								board[i][j]->PC = board[i][j]->species->InstructionSet[board[i][j]->PC].second;
 
 						break;
