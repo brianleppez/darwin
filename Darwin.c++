@@ -23,14 +23,11 @@ void Creature::infect(Creature* other) {
 	}
 }
 
-<<<<<<< HEAD
 void Creature:: incrementPC() 
 {
 	PC = (PC+1) % (species->InstructionSet.size());
 }
-=======
-void Creature:: incrementPC() {PC = (PC+1) % (species->InstructionSet.size());}
->>>>>>> 8237d00ba0a91b86b53d9cddc66c223a04e7825c
+
 
 
 Darwin::Darwin (int height, int width) :
