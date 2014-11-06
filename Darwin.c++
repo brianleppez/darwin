@@ -182,19 +182,10 @@ class Darwin {
 			{
 				for (int j = 0; j < width; j++) 
 				{
-					
-					
-					if(board[i][j] != 0 )
-					{
-						//printf(">>>%d  %d\n", i,j );
-
-						//cout << "turnFlag: " << board[i][j]->turnFlag << "darwinTurn" << darwinTurnFlag<< endl;
-						//cout << "direction>: " << board[i][j]->direction << endl;
-					}
-
-					if (board[i][j] != 0 && board[i][j]->turnFlag == darwinTurnFlag) {
+					while (board[i][j] != 0 && board[i][j]->turnFlag == darwinTurnFlag) {
 						
 						int instruction = board[i][j]->species->InstructionSet[board[i][j]->PC].first;
+						//cout << "Creature position: " << i << " " << j << " PC: " << board[i][j]->PC << endl;
 
 						
 
@@ -210,8 +201,13 @@ class Darwin {
 											//std::cout << "east1" << endl;
 											board[i][j+1] = board[i][j];
 											board[i][j] = 0;
-
+											board[i][j+1]->PC++;
 											board[i][j+1]->turnFlag = !board[i][j+1]->turnFlag;
+										}
+										else {
+											board[i][j]->PC++;
+											board[i][j]->turnFlag = !board[i][j]->turnFlag;
+
 										}
 									break;
 									
@@ -223,9 +219,14 @@ class Darwin {
 											//std::cout << "north1" << endl;
 											board[i-1][j] = board[i][j];
 											board[i][j] = 0;
+											board[i-1][j]->PC++;
 											//cout << "north turnFlag: " << board[i-1][j]->turnFlag << endl;
 											board[i-1][j]->turnFlag = !board[i-1][j]->turnFlag;
 											//cout << "north turnFlag2: " << board[i-1][j]->turnFlag << endl;
+										}
+										else {
+											board[i][j]->PC++;
+											board[i][j]->turnFlag = !board[i][j]->turnFlag;
 										}
 									break;
 
@@ -237,19 +238,29 @@ class Darwin {
 											//std::cout << "west1" << endl;
 											board[i][j-1] = board[i][j];
 											board[i][j] = 0;
+											board[i][j-1]->PC++;
 											board[i][j-1]->turnFlag = !board[i][j-1]->turnFlag;
+										}
+										else {
+											board[i][j]->PC++;
+											board[i][j]->turnFlag = !board[i][j]->turnFlag;
 										}
 									break;
 
 									case SOUTH:
 										
-										std::cout << "south" << endl;
+										//std::cout << "south" << endl;
 										if(i < height-1 && board[i+1][j] == 0)
 										{
-											std::cout << "south1" << endl;
+											//std::cout << "south1" << endl;
 											board[i+1][j] = board[i][j];
 											board[i][j] = 0;
+											board[i+1][j]->PC++;
 											board[i+1][j]->turnFlag = !board[i+1][j]->turnFlag;
+										}
+										else {
+											board[i][j]->PC++;
+											board[i][j]->turnFlag = !board[i][j]->turnFlag;
 										}
 									break;
 
@@ -260,14 +271,18 @@ class Darwin {
 							case 2: // left
 							
 								board[i][j]->direction = ((board[i][j]->direction) +1) % 4;
+								board[i][j]->turnFlag = !board[i][j]->turnFlag;
 							break;
 							
 							case 3: // right
 								
-								if (board[i][j]->direction == EAST)
+								if (board[i][j]->direction == EAST) {
 									board[i][j]->direction = SOUTH;
+									board[i][j]->turnFlag = !board[i][j]->turnFlag;
+								}
 								else {
 									board[i][j]->direction--;
+									board[i][j]->turnFlag = !board[i][j]->turnFlag;
 								}
 							break;
 							
@@ -276,37 +291,53 @@ class Darwin {
 								switch(board[i][j]->direction)
 								{
 									case EAST:
-										 std::cout << "infect east" << endl;
+										//std::cout << "infect east" << endl;
 										if(j < width-1 && board[i][j+1] != 0)
 										{
 											board[i][j]->infect(board[i][j+1]);
+											board[i][j]->turnFlag = !board[i][j]->turnFlag;
+										}
+										else {
+											board[i][j]->turnFlag = !board[i][j]->turnFlag;
 										}
 									break;
 									
 									case NORTH:
 										
-										std::cout << "infect north >> : " << board[i-1][j] << endl;
+										//std::cout << "infect north >> : " << board[i-1][j] << endl;
 										if(i > 0 && board[i-1][j] != 0 && board[i-1][j])
 										{
 											board[i][j]->infect(board[i-1][j]);
+											board[i][j]->turnFlag = !board[i][j]->turnFlag;
+										}
+										else {
+											board[i][j]->turnFlag = !board[i][j]->turnFlag;
 										}
 									break;
 
 									case WEST:
 										
-										std::cout << "infect west" << endl;
+										//std::cout << "infect west" << endl;
 										if(j > 0 && board[i][j-1] == 0)
 										{
 											board[i][j]->infect(board[i][j-1]);
+											board[i][j]->turnFlag = !board[i][j]->turnFlag;
+										}
+										else {
+											board[i][j]->turnFlag = !board[i][j]->turnFlag;
 										}
 									break;
 
 									case SOUTH:
 										
-										std::cout << "infect south" << endl;
+										//std::cout << "infect south" << endl;
 										if(i < height-1 && board[i+1][j] == 0)
 										{
 											board[i][j]->infect(board[i+1][j]);
+											board[i][j]->turnFlag = !board[i][j]->turnFlag;
+										}
+										else {
+											board[i][j]->turnFlag = !board[i][j]->turnFlag;
 										}
 									break;
 								}
