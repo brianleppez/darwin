@@ -160,61 +160,61 @@ int main () {
 
     // d.darwin_print(cout);
 
-     //{
-        /*
-        Darwin d(10, 10);
-        Species hopper('h');
-        Species food('f');
+    //  {
+        
+    //     Darwin d(10, 10);
+    //     Species hopper('h');
+    //     Species food('f');
 
-        //cout << "hopper:  " << hopper.symbol << endl;
-
-
-        hopper.addInstruction(1);
-        food.addInstruction(1);
-
-        //cout << "hopper2:  " << hopper.symbol << endl;
-        Creature h1(&hopper);
-        //cout << "Direction at addCreature0:" << h1.direction << endl;
-        Creature h2(&food);
-        //cout << "Direction at addCreature0.1:" << h1.direction << endl;
-
-        //cout << "hopper3:  " << hopper.symbol << endl;
+    //     //cout << "hopper:  " << hopper.symbol << endl;
 
 
-        d.addCreature(h1, SOUTH, 1, 2);
-        //cout << "Direction at addCreature:" << d.board[1][1]->direction << endl;
-        //cout << "hopper4:  " << hopper.symbol << endl;
-        d.addCreature(h2, NORTH, 9, 2);
-        cout << "Direction of Creature1: " << d.board[1][2]->direction << endl;
-        cout << "Direction of Creature2: " << d.board[9][2]->direction << endl;
-        d.darwin_print(cout);
+    //     hopper.addInstruction(1);
+    //     food.addInstruction(1);
+
+    //     //cout << "hopper2:  " << hopper.symbol << endl;
+    //     Creature h1(&hopper);
+    //     //cout << "Direction at addCreature0:" << h1.direction << endl;
+    //     Creature h2(&food);
+    //     //cout << "Direction at addCreature0.1:" << h1.direction << endl;
+
+    //     //cout << "hopper3:  " << hopper.symbol << endl;
+
+
+    //     d.addCreature(h1, SOUTH, 1, 2);
+    //     //cout << "Direction at addCreature:" << d.board[1][1]->direction << endl;
+    //     //cout << "hopper4:  " << hopper.symbol << endl;
+    //     d.addCreature(h2, NORTH, 9, 2);
+    //     cout << "Direction of Creature1: " << d.board[1][2]->direction << endl;
+    //     cout << "Direction of Creature2: " << d.board[9][2]->direction << endl;
+    //     d.darwin_print(cout);
         
 
 
         
         
-        // d.addCreature(monster, NORTH, 0, 0);
-        // d.addCreature(monster, SOUTH, 9, 8);
-        // d.addCreature(monster, EAST, 9, 9);
+    //     // d.addCreature(monster, NORTH, 0, 0);
+    //     // d.addCreature(monster, SOUTH, 9, 8);
+    //     // d.addCreature(monster, EAST, 9, 9);
 
-        //d.addCreature(monster, NORTH, 1, 2);
+    //     //d.addCreature(monster, NORTH, 1, 2);
 
-        //d.darwin_run(9, std::cout);
-    }
+    //     //d.darwin_run(9, std::cout);
+    // }
     
 
     cout << "*** Darwin 8x8 ***" << endl;
-    /*
-    8x8 Darwin
-    Food,   facing east,  at (0, 0)
-    Hopper, facing north, at (3, 3)
-    Hopper, facing east,  at (3, 4)
-    Hopper, facing south, at (4, 4)
-    Hopper, facing west,  at (4, 3)
-    Food,   facing north, at (7, 7)
-    Simulate 5 moves.
-    Print every grid.
-    */
+    
+    // 8x8 Darwin
+    // Food,   facing east,  at (0, 0)
+    // Hopper, facing north, at (3, 3)
+    // Hopper, facing east,  at (3, 4)
+    // Hopper, facing south, at (4, 4)
+    // Hopper, facing west,  at (4, 3)
+    // Food,   facing north, at (7, 7)
+    // Simulate 5 moves.
+    // Print every grid.
+    
     {
         Darwin d(8,8);
         Creature f1(&food);
@@ -240,12 +240,12 @@ int main () {
     //  ROVER TEST
     //-------------
 
-    {
-        Creature rov(&rover);
-        Darwin d(9,9);
-        d.addCreature(rov, NORTH, 7, 8);
-        d.darwin_run(15, std::cout);
-    }
+    // {
+    //     Creature rov(&rover);
+    //     Darwin d(9,9);
+    //     d.addCreature(rov, NORTH, 7, 8);
+    //     d.darwin_run(15, std::cout);
+    // }
 
     // ----------
     // darwin 7x9
@@ -341,8 +341,8 @@ int main () {
     // with best
     // ------------
 
-    cout << "*** Darwin 72x72 with Best ***" << endl;
-    srand(0);
+    // cout << "*** Darwin 72x72 with Best ***" << endl;
+    // srand(0);
     /*
     Randomly place the following creatures facing randomly.
     Call rand(), mod it with 5184 (72x72), and use that for the position

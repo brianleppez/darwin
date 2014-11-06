@@ -67,7 +67,8 @@ void Darwin::darwin_run(int moves, std::ostream& o) {
 		darwin_turn();
 		darwinTurnFlag = !darwinTurnFlag;
 		turn++;
-		darwin_print(o);
+		if(turn < 10 || turn %100 == 0)
+			darwin_print(o);
 	}
 }
 void Darwin::darwin_turn() {
@@ -190,8 +191,9 @@ void Darwin::darwin_turn() {
 							break;
 
 							case WEST:
-								if(j > 0 && board[i][j-1] == 0)
+								if(j > 0 && board[i][j-1] != 0)
 								{
+
 									board[i][j]->infect(board[i][j-1]);
 									board[i][j]->turnFlag = !board[i][j]->turnFlag;
 								}
@@ -201,7 +203,7 @@ void Darwin::darwin_turn() {
 							break;
 
 							case SOUTH:
-								if(i < height-1 && board[i+1][j] == 0)
+								if(i < height-1 && board[i+1][j] != 0)
 								{
 									board[i][j]->infect(board[i+1][j]);
 									board[i][j]->turnFlag = !board[i][j]->turnFlag;

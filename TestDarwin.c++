@@ -114,10 +114,27 @@ TEST(Darwin, creatures2)
     ASSERT_EQ(c1.species->symbol, 'r');
     for(int i = 1; i < 30; i++)
     {
-    	cout << "ASDFASDF" << endl;
+    	
     	c1.incrementPC();
     	ASSERT_EQ(i%11, c1.PC);
 
     }
     
+}
+
+TEST(Darwin, creatures3)
+{
+    Species rover('r');
+    rover.addInstruction(IF_ENEMY, 9);  //0
+    rover.addInstruction(IF_EMPTY, 7);  //1
+    rover.addInstruction(IF_RANDOM, 5); //2
+    rover.addInstruction(LEFT);         //3
+    rover.addInstruction(GO, 0);        //4
+    rover.addInstruction(RIGHT);        //5
+    rover.addInstruction(GO, 0);         //6
+    rover.addInstruction(HOP);          //7
+    rover.addInstruction(GO, 0);        //8
+    rover.addInstruction(INFECT);       //9
+    rover.addInstruction(GO, 0);        //10
+    Creature c1(&rover);
 }
