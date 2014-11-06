@@ -233,7 +233,7 @@ TEST(Darwin, creatures3)
 
 }
 
-<<<<<<< HEAD
+
 TEST(Darwin, darwin_constructor)
 {
     Darwin d(4,4);
@@ -302,9 +302,9 @@ TEST(Darwin, darwin_run)
     d.darwin_run(1, w);
     ASSERT_EQ("Turn = 0.\n  0123\n0 r...\n1 ....\n2 ....\n3 ....\n\nTurn = 1.\n  0123\n0 .r..\n1 ....\n2 ....\n3 ....\n\n", w.str());
 
-    
+}
 
-=======
+
 TEST(Darwin, darwin_turn) {
     Darwin d(2, 2);
     Species food('f');
@@ -370,5 +370,5 @@ TEST(Darwin, darwin_turn6) {
     d.addCreature(c, NORTH, 1, 1);
     d.darwin_turn();
     ASSERT_EQ(d.board[0][1]->PC, 1);
->>>>>>> b9e71a826bc58b5c4f2babca83d4802d90b3f638
+
 }
