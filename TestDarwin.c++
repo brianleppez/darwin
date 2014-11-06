@@ -175,4 +175,59 @@ TEST(Darwin, creatures3)
     rover.addInstruction(INFECT);       //9
     rover.addInstruction(GO, 0);        //10
     Creature c1(&rover);
+
+    Species food('f');
+    food.addInstruction(LEFT);
+    food.addInstruction(GO, 0);
+    Creature c2(&food);
+
+    c1.infect(&c2);
+    ASSERT_EQ(c1.species->symbol, 'r');
+    ASSERT_EQ(c1.species->symbol, c2.species->symbol);
+    ASSERT_EQ(c1.species->InstructionSet.size(), c2.species->InstructionSet.size());
+    ASSERT_EQ(c1.species->InstructionSet[0].first, IF_ENEMY);
+    ASSERT_EQ(c1.species->InstructionSet[1].first, IF_EMPTY);
+    ASSERT_EQ(c1.species->InstructionSet[2].first, IF_RANDOM);
+    ASSERT_EQ(c1.species->InstructionSet[3].first, LEFT);
+    ASSERT_EQ(c1.species->InstructionSet[4].first, GO);
+    ASSERT_EQ(c1.species->InstructionSet[5].first, RIGHT);
+    ASSERT_EQ(c1.species->InstructionSet[6].first, GO);
+    ASSERT_EQ(c1.species->InstructionSet[7].first, HOP);
+    ASSERT_EQ(c1.species->InstructionSet[8].first, GO);
+    ASSERT_EQ(c1.species->InstructionSet[9].first, INFECT);
+    ASSERT_EQ(c1.species->InstructionSet[10].first, GO);
+    ASSERT_EQ(c1.species->InstructionSet[0].second, 9);
+    ASSERT_EQ(c1.species->InstructionSet[1].second, 7);
+    ASSERT_EQ(c1.species->InstructionSet[2].second, 5);
+    ASSERT_EQ(c1.species->InstructionSet[3].second, -1);
+    ASSERT_EQ(c1.species->InstructionSet[4].second, 0);
+    ASSERT_EQ(c1.species->InstructionSet[5].second, -1);
+    ASSERT_EQ(c1.species->InstructionSet[6].second, 0);
+    ASSERT_EQ(c1.species->InstructionSet[7].second, -1);
+    ASSERT_EQ(c1.species->InstructionSet[8].second, 0);
+    ASSERT_EQ(c1.species->InstructionSet[9].second, -1);
+    ASSERT_EQ(c1.species->InstructionSet[10].second, 0);
+    ASSERT_EQ(c2.species->InstructionSet[0].first, IF_ENEMY);
+    ASSERT_EQ(c2.species->InstructionSet[1].first, IF_EMPTY);
+    ASSERT_EQ(c2.species->InstructionSet[2].first, IF_RANDOM);
+    ASSERT_EQ(c2.species->InstructionSet[3].first, LEFT);
+    ASSERT_EQ(c2.species->InstructionSet[4].first, GO);
+    ASSERT_EQ(c2.species->InstructionSet[5].first, RIGHT);
+    ASSERT_EQ(c2.species->InstructionSet[6].first, GO);
+    ASSERT_EQ(c2.species->InstructionSet[7].first, HOP);
+    ASSERT_EQ(c2.species->InstructionSet[8].first, GO);
+    ASSERT_EQ(c2.species->InstructionSet[9].first, INFECT);
+    ASSERT_EQ(c2.species->InstructionSet[10].first, GO);
+    ASSERT_EQ(c2.species->InstructionSet[0].second, 9);
+    ASSERT_EQ(c2.species->InstructionSet[1].second, 7);
+    ASSERT_EQ(c2.species->InstructionSet[2].second, 5);
+    ASSERT_EQ(c2.species->InstructionSet[3].second, -1);
+    ASSERT_EQ(c2.species->InstructionSet[4].second, 0);
+    ASSERT_EQ(c2.species->InstructionSet[5].second, -1);
+    ASSERT_EQ(c2.species->InstructionSet[6].second, 0);
+    ASSERT_EQ(c2.species->InstructionSet[7].second, -1);
+    ASSERT_EQ(c2.species->InstructionSet[8].second, 0);
+    ASSERT_EQ(c2.species->InstructionSet[9].second, -1);
+    ASSERT_EQ(c2.species->InstructionSet[10].second, 0);
+
 }
