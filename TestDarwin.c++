@@ -4,7 +4,7 @@
 #include <utility>
 #include <vector>
 #include <cassert>
-#include "Darwin.c++"
+#include "Darwin.h"
 
 #include "gtest/gtest.h"
 
@@ -14,6 +14,20 @@ TEST(Darwin, print) {
 	Darwin d(8,8);
 	d.darwin_print(w);
 	ASSERT_EQ("Turn = 0.\n  01234567\n0 ........\n1 ........\n2 ........\n3 ........\n4 ........\n5 ........\n6 ........\n7 ........\n\n", w.str());
+}
+
+TEST(Darwin, print2) {
+    std::ostringstream w;
+    Darwin d(1,1);
+    d.darwin_print(w);
+    ASSERT_EQ("Turn = 0.\n  0\n0 .\n\n", w.str());
+}
+
+TEST(Darwin, print3) {
+    std::ostringstream w;
+    Darwin d(2,2);
+    d.darwin_print(w);
+    ASSERT_EQ("Turn = 0.\n  01\n0 ..\n1 ..\n\n", w.str());
 }
 
 TEST(Darwin, species)
@@ -28,6 +42,11 @@ TEST(Darwin, species2)
 {
 	Species food('h');
     ASSERT_EQ(food.symbol, 'h');
+}
+
+TEST(Darwin, species4) {
+    Species best('b');
+    ASSERT_EQ(best.symbol, 'b');
 }
 
 TEST(Darwin, species_rover)
@@ -79,6 +98,25 @@ TEST(Darwin, species3)
     ASSERT_EQ(food.InstructionSet[0].first, LEFT);
     ASSERT_EQ(food.InstructionSet[1].first, GO);
     ASSERT_EQ(food.InstructionSet[1].second, 0);
+}
+
+TEST(Darwin, direction) {
+    Species best('b');
+    Creature c1(&best);
+    ASSERT_EQ(c1.direction, 0);
+}
+
+TEST(Darwin, turnFlag) {
+    Species best('b');
+    Creature c1(&best);
+    ASSERT_EQ(c1.turnFlag, false);
+}
+
+TEST(Darwin, PC) {
+    Species best('b');
+    Creature c1(&best);
+    ASSERT_EQ(c1.PC, 0);
+
 }
 
 TEST(Darwin, creatures)
