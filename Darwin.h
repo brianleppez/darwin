@@ -92,7 +92,9 @@ public:
 	 */
 	void infect(Creature*);
 
-	 Increments the PC and prevents from overflowing.
+	 /**
+	  * Increments the PC and prevents from overflowing.
+	  */
 	void incrementPC();
 };
 

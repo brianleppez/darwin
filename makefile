@@ -32,7 +32,5 @@ clean:
 	rm -f *.gcno
 	rm -f *.gcov
 	rm -f RunDarwin
-	rm -f RunDarwin.out
 	rm -f RunDarwin.tmp
 	rm -f TestDarwin
-	rm -f TestDarwin.out
